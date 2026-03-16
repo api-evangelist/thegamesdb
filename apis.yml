@@ -1,27 +1,43 @@
 aid: thegamesdb
 name: TheGamesDB
-description: 'TheGamesDB API '
+description: An open, online database for video game fans providing game information, artwork, and metadata via API.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Video Games
+  - Gaming
+  - Database
 created: '2025-02-08'
-modified: '2025-02-08'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
   - aid: thegamesdb:thegamesdb
-    name: TheGamesDB
-    description: 'TheGamesDB API '
-    humanURL: ' https://api.thegamesdb.net/'
+    name: TheGamesDB API
+    description: An open, online database for video game fans providing game information, artwork, and metadata via API.
+    humanURL: https://api.thegamesdb.net/
+    baseURL: https://api.thegamesdb.net
     tags:
-      - API
+      - Video Games
+      - Gaming
+      - Database
     properties:
       - type: Documentation
-        url: ' https://api.thegamesdb.net/'
+        url: https://api.thegamesdb.net/
+      - type: Sign Up
+        url: https://api.thegamesdb.net/key.php
+common:
+  - type: Website
+    url: https://thegamesdb.net/
+  - type: Documentation
+    url: https://api.thegamesdb.net/
+  - type: Sign Up
+    url: https://api.thegamesdb.net/key.php
+  - type: GitHub Organization
+    url: https://github.com/TheGamesDB
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
