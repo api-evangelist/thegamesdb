@@ -1,0 +1,159 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "gamesdb": "https://api.thegamesdb.net/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Game": "gamesdb:Game",
+    "GameImage": "gamesdb:GameImage",
+    "GamesImagesResponse": "gamesdb:GamesImagesResponse",
+    "PlatformsResponse": "gamesdb:PlatformsResponse",
+    "GamesByGameIDResponse": "gamesdb:GamesByGameIDResponse",
+    "Platform": "gamesdb:Platform",
+    "GamesUpdatesResponse": "gamesdb:GamesUpdatesResponse",
+    "GenresDevelopersPublishersResponse": "gamesdb:GenresDevelopersPublishersResponse",
+    "id": {
+      "@id": "gamesdb:id",
+      "@type": "xsd:integer"
+    },
+    "gameTitle": {
+      "@id": "gamesdb:game_title",
+      "@type": "xsd:string"
+    },
+    "releaseDate": {
+      "@id": "gamesdb:release_date",
+      "@type": "xsd:string"
+    },
+    "platform": {
+      "@id": "gamesdb:platform",
+      "@type": "xsd:integer"
+    },
+    "regionId": {
+      "@id": "gamesdb:region_id",
+      "@type": "xsd:integer"
+    },
+    "countryId": {
+      "@id": "gamesdb:country_id",
+      "@type": "xsd:integer"
+    },
+    "overview": {
+      "@id": "gamesdb:overview",
+      "@type": "xsd:string"
+    },
+    "youtube": {
+      "@id": "gamesdb:youtube",
+      "@type": "xsd:string"
+    },
+    "players": {
+      "@id": "gamesdb:players",
+      "@type": "xsd:integer"
+    },
+    "coop": {
+      "@id": "gamesdb:coop",
+      "@type": "xsd:string"
+    },
+    "rating": {
+      "@id": "gamesdb:rating",
+      "@type": "xsd:string"
+    },
+    "alternates": {
+      "@id": "gamesdb:alternates",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "gamesdb:type",
+      "@type": "xsd:string"
+    },
+    "side": {
+      "@id": "gamesdb:side",
+      "@type": "xsd:string"
+    },
+    "filename": {
+      "@id": "gamesdb:filename",
+      "@type": "xsd:string"
+    },
+    "resolution": {
+      "@id": "gamesdb:resolution",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "gamesdb:code",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "gamesdb:status",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "gamesdb:data",
+      "@type": "xsd:string"
+    },
+    "count": {
+      "@id": "gamesdb:count",
+      "@type": "xsd:integer"
+    },
+    "images": {
+      "@id": "gamesdb:images",
+      "@type": "xsd:string"
+    },
+    "baseUrl": {
+      "@id": "gamesdb:base_url",
+      "@type": "xsd:string"
+    },
+    "original": {
+      "@id": "gamesdb:original",
+      "@type": "xsd:string"
+    },
+    "medium": {
+      "@id": "gamesdb:medium",
+      "@type": "xsd:string"
+    },
+    "small": {
+      "@id": "gamesdb:small",
+      "@type": "xsd:string"
+    },
+    "large": {
+      "@id": "gamesdb:large",
+      "@type": "xsd:string"
+    },
+    "thumb": {
+      "@id": "gamesdb:thumb",
+      "@type": "xsd:string"
+    },
+    "remainingMonthlyAllowance": {
+      "@id": "gamesdb:remaining_monthly_allowance",
+      "@type": "xsd:integer"
+    },
+    "extraAllowance": {
+      "@id": "gamesdb:extra_allowance",
+      "@type": "xsd:integer"
+    },
+    "name": "schema:name",
+    "alias": {
+      "@id": "gamesdb:alias",
+      "@type": "xsd:string"
+    },
+    "icon": {
+      "@id": "gamesdb:icon",
+      "@type": "xsd:string"
+    },
+    "console": {
+      "@id": "gamesdb:console",
+      "@type": "xsd:string"
+    },
+    "controller": {
+      "@id": "gamesdb:controller",
+      "@type": "xsd:string"
+    },
+    "developer": {
+      "@id": "gamesdb:developer",
+      "@type": "xsd:string"
+    },
+    "manufacturer": {
+      "@id": "gamesdb:manufacturer",
+      "@type": "xsd:string"
+    }
+  }
+}

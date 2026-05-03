@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-schema/thegamesdb-game-image-schema.json",
+  "title": "GameImage",
+  "description": "Game or platform artwork image",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Image identifier"
+    },
+    "type": {
+      "type": "string",
+      "description": "Image type",
+      "enum": [
+        "boxart",
+        "screenshot",
+        "fanart",
+        "banner",
+        "clearlogo"
+      ]
+    },
+    "side": {
+      "type": "string",
+      "description": "Image side for boxart (front/back)",
+      "nullable": true
+    },
+    "filename": {
+      "type": "string",
+      "description": "Image filename path"
+    },
+    "resolution": {
+      "type": "string",
+      "description": "Image resolution (WxH)",
+      "nullable": true
+    }
+  }
+}

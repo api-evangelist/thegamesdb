@@ -1,0 +1,159 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "TheGamesDB"
+  description: "Vocabulary covering video game database resources, operations, and personas for TheGamesDB API"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - namespace: gamesdb
+      version: "2.0.0"
+      baseUrl: https://api.thegamesdb.net
+      status: active
+
+  resources:
+    - name: games
+      api: gamesdb
+      actions: [search, get, list]
+      description: "Video games with metadata, artwork, and platform associations"
+    - name: platforms
+      api: gamesdb
+      actions: [list, get, search]
+      description: "Gaming platforms (consoles, handhelds, PC) with technical specs"
+    - name: game-images
+      api: gamesdb
+      actions: [get]
+      description: "Game and platform artwork (boxart, screenshots, fanart, banners)"
+    - name: genres
+      api: gamesdb
+      actions: [list]
+      description: "Game genre classifications"
+    - name: developers
+      api: gamesdb
+      actions: [list]
+      description: "Video game development studios"
+    - name: publishers
+      api: gamesdb
+      actions: [list]
+      description: "Video game publishers and distributors"
+
+  actions:
+    - name: search
+      methods: [GET]
+      pattern: query
+    - name: get
+      methods: [GET]
+      pattern: read
+    - name: list
+      methods: [GET]
+      pattern: read
+
+  schemas:
+    core:
+      - name: Game
+        description: "Video game with title, platform, release date, and metadata"
+      - name: Platform
+        description: "Gaming platform with hardware specifications and metadata"
+      - name: GameImage
+        description: "Game or platform artwork image with type and resolution"
+      - name: GamesByGameIDResponse
+        description: "API response wrapper for game queries"
+      - name: PlatformsResponse
+        description: "API response wrapper for platform queries"
+
+  parameters:
+    pagination:
+      - name: page
+        description: "Results page offset"
+    filters:
+      - name: id
+        description: "Comma-delimited list of IDs to retrieve"
+      - name: name
+        description: "Search term"
+      - name: filter[platform]
+        description: "Filter games by platform ID"
+      - name: filter[type]
+        description: "Filter images by type"
+      - name: fields
+        description: "Optional additional fields to include"
+      - name: include
+        description: "Optional related data (boxart, platform)"
+    identifiers:
+      - name: id
+        description: "Game or platform ID"
+      - name: games_id
+        description: "Game ID for image queries"
+      - name: platforms_id
+        description: "Platform ID for image queries"
+
+  enums:
+    image_types:
+      - boxart
+      - screenshot
+      - fanart
+      - banner
+      - clearlogo
+
+  authentication:
+    - scheme: apikey-query
+      type: apiKey
+      description: "API key passed as query parameter 'apikey'"
+
+capability:
+  workflows:
+    - name: video-game-discovery
+      file: capabilities/video-game-discovery.yaml
+      description: "Video game search, metadata lookup, and platform research"
+      apisUsed: [gamesdb]
+      toolCount: 9
+      personas: [Gamer, Developer, Collector, AI Agent]
+
+  personas:
+    - id: gamer
+      name: Gamer
+      description: "Enthusiast looking up game information and artwork"
+      workflows: [video-game-discovery]
+    - id: developer
+      name: Developer
+      description: "App developer building gaming-related applications"
+      workflows: [video-game-discovery]
+    - id: collector
+      name: Collector
+      description: "Video game collector researching titles and platforms"
+      workflows: [video-game-discovery]
+    - id: ai-agent
+      name: AI Agent
+      description: "LLM helping users discover and learn about video games"
+      workflows: [video-game-discovery]
+
+  domains:
+    - name: Game Discovery
+      description: "Searching for and browsing video game metadata"
+    - name: Platform Research
+      description: "Exploring gaming platform specifications and game libraries"
+
+  namespaces:
+    - id: gamesdb
+      type: consumed
+      baseUri: https://api.thegamesdb.net
+    - id: game-discovery-api
+      type: rest-exposed
+      port: 8080
+    - id: game-discovery-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - THEGAMESDB_API_KEY
+
+crossReference:
+  - resource: games
+    operations: [search-games-by-name, get-game-by-id, get-games-by-platform]
+    workflows: [video-game-discovery]
+    personas: [Gamer, Developer, Collector, AI Agent]
+  - resource: platforms
+    operations: [list-all-platforms, search-platforms-by-name]
+    workflows: [video-game-discovery]
+    personas: [Collector, Developer]

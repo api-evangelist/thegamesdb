@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-structure/thegamesdb-platform-structure.json",
+  "name": "Platform",
+  "description": "Gaming platform details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "description": "Platform identifier",
+      "example": 14
+    },
+    "name": {
+      "type": "string",
+      "description": "Platform name",
+      "example": "Microsoft Xbox"
+    },
+    "alias": {
+      "type": "string",
+      "description": "URL-friendly platform alias",
+      "example": "microsoft-xbox"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Platform icon filename",
+      "nullable": true
+    },
+    "console": {
+      "type": "string",
+      "description": "Console image filename",
+      "nullable": true
+    },
+    "controller": {
+      "type": "string",
+      "description": "Controller image filename",
+      "nullable": true
+    },
+    "developer": {
+      "type": "string",
+      "description": "Platform developer name",
+      "nullable": true
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Platform manufacturer",
+      "nullable": true
+    },
+    "overview": {
+      "type": "string",
+      "description": "Platform overview/description",
+      "nullable": true
+    },
+    "youtube": {
+      "type": "string",
+      "description": "YouTube URL",
+      "nullable": true
+    }
+  }
+}

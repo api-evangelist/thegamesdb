@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-schema/thegamesdb-games-images-response-schema.json",
+  "title": "GamesImagesResponse",
+  "description": "API response for game/platform image queries",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "HTTP response code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "Number of images"
+        },
+        "images": {
+          "type": "object",
+          "description": "Images keyed by game/platform ID",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GameImage"
+            }
+          }
+        },
+        "base_url": {
+          "type": "object",
+          "description": "Base URL components for constructing image URLs",
+          "properties": {
+            "original": {
+              "type": "string"
+            },
+            "medium": {
+              "type": "string"
+            },
+            "small": {
+              "type": "string"
+            },
+            "large": {
+              "type": "string"
+            },
+            "thumb": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

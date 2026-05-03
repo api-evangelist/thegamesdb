@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-schema/thegamesdb-platforms-response-schema.json",
+  "title": "PlatformsResponse",
+  "description": "API response for platform queries",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "HTTP response code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "Number of platforms"
+        },
+        "platforms": {
+          "type": "object",
+          "description": "Platforms keyed by platform ID",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Platform"
+          }
+        }
+      }
+    }
+  }
+}

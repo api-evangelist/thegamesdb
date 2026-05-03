@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-structure/thegamesdb-platforms-response-structure.json",
+  "name": "PlatformsResponse",
+  "description": "API response for platform queries",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "int32",
+      "description": "HTTP response code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "int32",
+          "description": "Number of platforms"
+        },
+        "platforms": {
+          "type": "object",
+          "description": "Platforms keyed by platform ID",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Platform"
+          }
+        }
+      }
+    }
+  }
+}

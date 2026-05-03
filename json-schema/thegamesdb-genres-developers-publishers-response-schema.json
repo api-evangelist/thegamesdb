@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-schema/thegamesdb-genres-developers-publishers-response-schema.json",
+  "title": "GenresDevelopersPublishersResponse",
+  "description": "API response for genres, developers, or publishers",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "HTTP response code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status"
+    },
+    "data": {
+      "type": "object",
+      "description": "Response data containing genres, developers, or publishers",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "Number of results"
+        },
+        "genres": {
+          "type": "object",
+          "description": "Genres keyed by ID (when querying genres)",
+          "nullable": true,
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "developers": {
+          "type": "object",
+          "description": "Developers keyed by ID (when querying developers)",
+          "nullable": true,
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "publishers": {
+          "type": "object",
+          "description": "Publishers keyed by ID (when querying publishers)",
+          "nullable": true,
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

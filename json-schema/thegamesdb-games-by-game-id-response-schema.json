@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-schema/thegamesdb-games-by-game-id-response-schema.json",
+  "title": "GamesByGameIDResponse",
+  "description": "API response for game queries",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "HTTP response code",
+      "example": 200
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status message",
+      "example": "Success"
+    },
+    "remaining_monthly_allowance": {
+      "type": "integer",
+      "description": "Remaining API calls this month"
+    },
+    "extra_allowance": {
+      "type": "integer",
+      "description": "Additional allowance"
+    },
+    "data": {
+      "type": "object",
+      "description": "Response data payload",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "description": "Number of results"
+        },
+        "games": {
+          "type": "array",
+          "description": "Array of game objects",
+          "items": {
+            "$ref": "#/components/schemas/Game"
+          }
+        }
+      }
+    }
+  }
+}

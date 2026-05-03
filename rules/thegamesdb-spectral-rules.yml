@@ -1,0 +1,200 @@
+rules:
+
+  # INFO / METADATA
+  info-title-required:
+    description: Info object must have a title
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+
+  info-description-required:
+    description: Info object must have a description
+    severity: warn
+    given: $.info
+    then:
+      field: description
+      function: truthy
+
+  info-version-required:
+    description: API version must be defined
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  # OPENAPI VERSION
+  openapi-version-3:
+    description: OpenAPI version should be 3.x
+    severity: warn
+    given: $
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # SERVERS
+  servers-defined:
+    description: Servers array must be defined
+    severity: error
+    given: $
+    then:
+      field: servers
+      function: truthy
+
+  servers-https:
+    description: Server URLs must use HTTPS
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  # PATHS
+  paths-no-trailing-slash:
+    description: Paths must not have trailing slashes
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  paths-versioned:
+    description: Paths should include a version prefix
+    severity: info
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/v[0-9]"
+
+  # OPERATIONS
+  operation-summary-required:
+    description: Operations must have a summary
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: summary
+      function: truthy
+
+  operation-description-required:
+    description: Operations must have a description
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: description
+      function: truthy
+
+  operation-operationId-required:
+    description: Operations must have an operationId
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: operationId
+      function: truthy
+
+  operation-tags-required:
+    description: Operations must have at least one tag
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy
+
+  operation-summary-provider-prefix:
+    description: Operation summaries should start with 'TheGamesDB'
+    severity: info
+    given: $.paths[*][get,post,put,delete,patch].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^TheGamesDB "
+
+  # PARAMETERS
+  parameter-apikey-required-in-query:
+    description: TheGamesDB requires apikey query parameter on all operations
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].parameters[?(@.name=='apikey')]
+    then:
+      field: required
+      function: truthy
+
+  parameter-description-required:
+    description: Parameters must have descriptions
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch].parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  parameter-pagination-page:
+    description: Paginated endpoints should use 'page' parameter name
+    severity: info
+    given: $.paths[*][get].parameters[?(@.name=='offset')]
+    then:
+      field: name
+      function: enumeration
+      functionOptions:
+        values:
+          - page
+
+  # RESPONSES
+  response-success-required:
+    description: Operations must have at least one success response
+    severity: error
+    given: $.paths[*][get,post,put,delete,patch].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          minProperties: 1
+
+  response-400-for-query-endpoints:
+    description: Query endpoints should document 400 bad input response
+    severity: info
+    given: $.paths[*][get].responses
+    then:
+      field: "400"
+      function: defined
+
+  response-403-for-api-key:
+    description: TheGamesDB endpoints should document 403 invalid key response
+    severity: warn
+    given: $.paths[*][get].responses
+    then:
+      field: "403"
+      function: defined
+
+  # SCHEMAS
+  schema-type-defined:
+    description: Schema objects should have a type
+    severity: warn
+    given: $.components.schemas[*]
+    then:
+      field: type
+      function: truthy
+
+  # HTTP METHODS
+  get-no-request-body:
+    description: GET operations must not have a request body
+    severity: error
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: falsy
+
+  # GENERAL QUALITY
+  no-empty-descriptions:
+    description: Descriptions must not be empty
+    severity: warn
+    given: $..description
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"

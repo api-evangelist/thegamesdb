@@ -1,0 +1,188 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "TheGamesDB Video Game Discovery"
+  description: "Unified workflow for video game discovery, metadata lookup, and platform research. Combines game search, platform browsing, artwork retrieval, and reference data (genres, developers, publishers) for game developers, collectors, and gaming applications."
+  tags:
+    - Gaming
+    - Video Games
+    - Database
+    - Metadata
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      THEGAMESDB_API_KEY: THEGAMESDB_API_KEY
+
+capability:
+  consumes:
+    - import: gamesdb
+      location: ./shared/thegamesdb.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: game-discovery-api
+      description: "Unified REST API for video game discovery and metadata lookup."
+      resources:
+        - path: /v1/games
+          name: games
+          description: "Search and browse video games"
+          operations:
+            - method: GET
+              name: search-games
+              description: "Search for games by name"
+              call: "gamesdb.search-games-by-name"
+              with:
+                name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/games/{id}
+          name: game-detail
+          description: "Game metadata and details"
+          operations:
+            - method: GET
+              name: get-game
+              description: "Get game details by ID"
+              call: "gamesdb.get-games-by-id"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/games/{id}/images
+          name: game-images
+          description: "Game artwork and images"
+          operations:
+            - method: GET
+              name: get-game-images
+              description: "Get artwork for a game"
+              call: "gamesdb.get-game-images"
+              with:
+                games_id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/platforms
+          name: platforms
+          description: "Gaming platforms"
+          operations:
+            - method: GET
+              name: list-platforms
+              description: "List all gaming platforms"
+              call: "gamesdb.list-platforms"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/genres
+          name: genres
+          description: "Game genres"
+          operations:
+            - method: GET
+              name: list-genres
+              description: "List all game genres"
+              call: "gamesdb.list-genres"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: game-discovery-mcp
+      transport: http
+      description: "MCP server for AI-assisted video game discovery and research."
+      tools:
+        - name: search-games-by-name
+          description: "Search for video games by name (e.g. Halo, Mario, Zelda)"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.search-games-by-name"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-game-by-id
+          description: "Get complete game details by game ID"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.get-games-by-id"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-games-by-platform
+          description: "Find all games for a specific gaming platform"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.get-games-by-platform"
+          with:
+            id: "tools.platform_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-game-artwork
+          description: "Get artwork and images for a game (boxart, screenshots, fanart)"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.get-game-images"
+          with:
+            games_id: "tools.game_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-all-platforms
+          description: "List all gaming platforms in the database with their IDs"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.list-platforms"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-platforms-by-name
+          description: "Search for a gaming platform by name"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.get-platforms-by-id"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-genres
+          description: "List all game genres in the database"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.list-genres"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-developers
+          description: "List all game developers in the database"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.list-developers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-publishers
+          description: "List all game publishers in the database"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gamesdb.list-publishers"
+          outputParameters:
+            - type: object
+              mapping: "$."

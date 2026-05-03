@@ -1,0 +1,13 @@
+{
+  "code": 44,
+  "status": "OPERATING",
+  "data": {
+    "count": 99,
+    "updates": [
+      {
+        "game_id": 75,
+        "edit_id": 72
+      }
+    ]
+  }
+}

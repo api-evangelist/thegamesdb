@@ -1,0 +1,15 @@
+{
+  "code": 50,
+  "status": "OPERATING",
+  "data": {
+    "count": 21,
+    "images": {},
+    "base_url": {
+      "original": "example-value",
+      "medium": "example-value",
+      "small": "example-value",
+      "large": "example-value",
+      "thumb": "example-value"
+    }
+  }
+}

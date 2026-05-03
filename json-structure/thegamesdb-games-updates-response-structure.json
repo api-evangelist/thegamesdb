@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-structure/thegamesdb-games-updates-response-structure.json",
+  "name": "GamesUpdatesResponse",
+  "description": "API response for game updates",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "int32",
+      "description": "HTTP response code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Response status"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "int32"
+        },
+        "updates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "game_id": {
+                "type": "int32"
+              },
+              "edit_id": {
+                "type": "int32"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/json-structure/thegamesdb-game-structure.json",
+  "name": "Game",
+  "description": "Video game details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "int32",
+      "description": "Unique game identifier",
+      "example": 1
+    },
+    "game_title": {
+      "type": "string",
+      "description": "Official game title",
+      "example": "Halo: Combat Evolved"
+    },
+    "release_date": {
+      "type": "string",
+      "description": "Release date",
+      "example": "2001-11-15"
+    },
+    "platform": {
+      "type": "int32",
+      "description": "Platform ID",
+      "example": 14
+    },
+    "region_id": {
+      "type": "int32",
+      "description": "Region identifier",
+      "nullable": true
+    },
+    "country_id": {
+      "type": "int32",
+      "description": "Country identifier",
+      "nullable": true
+    },
+    "overview": {
+      "type": "string",
+      "description": "Game description/overview",
+      "nullable": true
+    },
+    "youtube": {
+      "type": "string",
+      "description": "YouTube trailer URL",
+      "nullable": true
+    },
+    "players": {
+      "type": "int32",
+      "description": "Number of players supported",
+      "nullable": true
+    },
+    "coop": {
+      "type": "string",
+      "description": "Co-operative play supported",
+      "nullable": true
+    },
+    "rating": {
+      "type": "string",
+      "description": "Content rating (ESRB, PEGI, etc.)",
+      "nullable": true
+    },
+    "alternates": {
+      "type": "array",
+      "description": "Alternate game titles",
+      "nullable": true,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
