@@ -37,7 +37,7 @@ apis:
         url: https://api.thegamesdb.net/
       - type: OpenAPI
         url: openapi/thegamesdb-openapi.yml
-      - type: Sign Up
+      - type: SignUp
         url: https://api.thegamesdb.net/key.php
       - type: JSONSchema
         url: json-schema/thegamesdb-game-schema.json
@@ -45,7 +45,7 @@ apis:
       - type: JSONStructure
         url: json-structure/thegamesdb-game-structure.json
         title: Game Structure
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/thegamesdb-context.jsonld
         title: TheGamesDB JSON-LD Context
 common:
@@ -53,9 +53,9 @@ common:
     url: https://thegamesdb.net/
   - type: Documentation
     url: https://api.thegamesdb.net/
-  - type: Sign Up
+  - type: SignUp
     url: https://api.thegamesdb.net/key.php
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/TheGamesDB
   - type: SpectralRules
     url: rules/thegamesdb-spectral-rules.yml
