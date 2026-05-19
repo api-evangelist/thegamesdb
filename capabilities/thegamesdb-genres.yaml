@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TheGamesDB API — Genres
+  description: 'TheGamesDB API — Genres. 1 operations. Lead operation: Fetch Genres list. Self-contained Naftiko capability
+    covering one Thegamesdb business surface.'
+  tags:
+  - Thegamesdb
+  - Genres
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THEGAMESDB_API_KEY: THEGAMESDB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: thegamesdb-genres
+    baseUri: https://api.thegamesdb.net
+    description: TheGamesDB API — Genres business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-Genres
+      path: /v1/Genres
+      operations:
+      - name: genres
+        method: GET
+        description: Fetch Genres list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+  exposes:
+  - type: rest
+    namespace: thegamesdb-genres-rest
+    port: 8080
+    description: REST adapter for TheGamesDB API — Genres. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/genres
+      name: v1-genres
+      description: REST surface for v1-Genres.
+      operations:
+      - method: GET
+        name: genres
+        description: Fetch Genres list
+        call: thegamesdb-genres.genres
+        with:
+          apikey: rest.apikey
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: thegamesdb-genres-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TheGamesDB API — Genres. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: fetch-genres-list
+      description: Fetch Genres list
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-genres.genres
+      with:
+        apikey: tools.apikey
+      outputParameters:
+      - type: object
+        mapping: $.

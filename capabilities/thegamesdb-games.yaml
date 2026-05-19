@@ -1,0 +1,442 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TheGamesDB API — Games
+  description: 'TheGamesDB API — Games. 6 operations. Lead operation: Fetch game(s) by name. Self-contained Naftiko capability
+    covering one Thegamesdb business surface.'
+  tags:
+  - Thegamesdb
+  - Games
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THEGAMESDB_API_KEY: THEGAMESDB_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: thegamesdb-games
+    baseUri: https://api.thegamesdb.net
+    description: TheGamesDB API — Games business capability. Self-contained, no shared references.
+    resources:
+    - name: v1.1-Games-ByGameName
+      path: /v1.1/Games/ByGameName
+      operations:
+      - name: gamesbygamename
+        method: GET
+        description: Fetch game(s) by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+        - name: name
+          in: query
+          type: string
+          description: (Required) - Search term
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`,
+            `rating`, `platform`, `coop`, `youtube`, `os`, `process'
+        - name: filter[platform]
+          in: query
+          type: string
+          description: (Optional) - platform `id` can be obtain from the platforms api below, supports `,` delimited list
+        - name: include
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `boxart`, `platform`'
+        - name: page
+          in: query
+          type: integer
+          description: (Optional) - results page offset to return
+    - name: v1-Games-ByGameID
+      path: /v1/Games/ByGameID
+      operations:
+      - name: gamesbygameid
+        method: GET
+        description: Fetch game(s) by id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+        - name: id
+          in: query
+          type: string
+          description: (Required) - supports `,` delimited list
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`,
+            `rating`, `platform`, `coop`, `youtube`, `os`, `process'
+        - name: include
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `boxart`, `platform`'
+        - name: page
+          in: query
+          type: integer
+          description: (Optional) - results page offset to return
+    - name: v1-Games-ByGameName
+      path: /v1/Games/ByGameName
+      operations:
+      - name: gamesbygamenamev1
+        method: GET
+        description: Fetch game(s) by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+        - name: name
+          in: query
+          type: string
+          description: (Required) - Search term
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`,
+            `rating`, `platform`, `coop`, `youtube`, `os`, `process'
+        - name: filter[platform]
+          in: query
+          type: string
+          description: (Optional) - platform `id` can be obtain from the platforms api below, supports `,` delimited list
+        - name: include
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `boxart`, `platform`'
+        - name: page
+          in: query
+          type: integer
+          description: (Optional) - results page offset to return
+    - name: v1-Games-ByPlatformID
+      path: /v1/Games/ByPlatformID
+      operations:
+      - name: gamesbyplatformid
+        method: GET
+        description: Fetch game(s) by platform id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+        - name: id
+          in: query
+          type: string
+          description: (Required) - platform `id` can be obtain from the platforms api below, supports `,` delimited list
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`,
+            `rating`, `platform`, `coop`, `youtube`, `os`, `process'
+        - name: include
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `boxart`, `platform`'
+        - name: page
+          in: query
+          type: integer
+          description: (Optional) - results page offset to return
+    - name: v1-Games-Images
+      path: /v1/Games/Images
+      operations:
+      - name: gamesimages
+        method: GET
+        description: Fetch game(s) images by game(s) id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+        - name: games_id
+          in: query
+          type: string
+          description: (Required) - game(s) `id` can be obtain from the above games api, supports `,` delimited list
+          required: true
+        - name: filter[type]
+          in: query
+          type: string
+          description: '(Optional) - valid `,` delimited options: `fanart`, `banner`, `boxart`, `screenshot`, `clearlogo`,
+            `titlescreen`'
+        - name: page
+          in: query
+          type: integer
+          description: (Optional) - results page offset to return
+    - name: v1-Games-Updates
+      path: /v1/Games/Updates
+      operations:
+      - name: gamesupdates
+        method: GET
+        description: Fetch games update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: apikey
+          in: query
+          type: string
+          description: (Required)
+          required: true
+        - name: last_edit_id
+          in: query
+          type: integer
+          description: (Required)
+          required: true
+        - name: time
+          in: query
+          type: integer
+          description: (Optional)
+        - name: page
+          in: query
+          type: integer
+          description: (Optional) - results page offset to return
+  exposes:
+  - type: rest
+    namespace: thegamesdb-games-rest
+    port: 8080
+    description: REST adapter for TheGamesDB API — Games. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1-1/games/bygamename
+      name: v1-1-games-bygamename
+      description: REST surface for v1.1-Games-ByGameName.
+      operations:
+      - method: GET
+        name: gamesbygamename
+        description: Fetch game(s) by name
+        call: thegamesdb-games.gamesbygamename
+        with:
+          apikey: rest.apikey
+          name: rest.name
+          fields: rest.fields
+          filter[platform]: rest.filter[platform]
+          include: rest.include
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/games/bygameid
+      name: v1-games-bygameid
+      description: REST surface for v1-Games-ByGameID.
+      operations:
+      - method: GET
+        name: gamesbygameid
+        description: Fetch game(s) by id
+        call: thegamesdb-games.gamesbygameid
+        with:
+          apikey: rest.apikey
+          id: rest.id
+          fields: rest.fields
+          include: rest.include
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/games/bygamename
+      name: v1-games-bygamename
+      description: REST surface for v1-Games-ByGameName.
+      operations:
+      - method: GET
+        name: gamesbygamenamev1
+        description: Fetch game(s) by name
+        call: thegamesdb-games.gamesbygamenamev1
+        with:
+          apikey: rest.apikey
+          name: rest.name
+          fields: rest.fields
+          filter[platform]: rest.filter[platform]
+          include: rest.include
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/games/byplatformid
+      name: v1-games-byplatformid
+      description: REST surface for v1-Games-ByPlatformID.
+      operations:
+      - method: GET
+        name: gamesbyplatformid
+        description: Fetch game(s) by platform id
+        call: thegamesdb-games.gamesbyplatformid
+        with:
+          apikey: rest.apikey
+          id: rest.id
+          fields: rest.fields
+          include: rest.include
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/games/images
+      name: v1-games-images
+      description: REST surface for v1-Games-Images.
+      operations:
+      - method: GET
+        name: gamesimages
+        description: Fetch game(s) images by game(s) id
+        call: thegamesdb-games.gamesimages
+        with:
+          apikey: rest.apikey
+          games_id: rest.games_id
+          filter[type]: rest.filter[type]
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/games/updates
+      name: v1-games-updates
+      description: REST surface for v1-Games-Updates.
+      operations:
+      - method: GET
+        name: gamesupdates
+        description: Fetch games update
+        call: thegamesdb-games.gamesupdates
+        with:
+          apikey: rest.apikey
+          last_edit_id: rest.last_edit_id
+          time: rest.time
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: thegamesdb-games-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TheGamesDB API — Games. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: fetch-game-s-name
+      description: Fetch game(s) by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-games.gamesbygamename
+      with:
+        apikey: tools.apikey
+        name: tools.name
+        fields: tools.fields
+        filter[platform]: tools.filter[platform]
+        include: tools.include
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-game-s-id
+      description: Fetch game(s) by id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-games.gamesbygameid
+      with:
+        apikey: tools.apikey
+        id: tools.id
+        fields: tools.fields
+        include: tools.include
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-game-s-name-2
+      description: Fetch game(s) by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-games.gamesbygamenamev1
+      with:
+        apikey: tools.apikey
+        name: tools.name
+        fields: tools.fields
+        filter[platform]: tools.filter[platform]
+        include: tools.include
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-game-s-platform-id
+      description: Fetch game(s) by platform id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-games.gamesbyplatformid
+      with:
+        apikey: tools.apikey
+        id: tools.id
+        fields: tools.fields
+        include: tools.include
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-game-s-images-game-s-id
+      description: Fetch game(s) images by game(s) id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-games.gamesimages
+      with:
+        apikey: tools.apikey
+        games_id: tools.games_id
+        filter[type]: tools.filter[type]
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-games-update
+      description: Fetch games update
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: thegamesdb-games.gamesupdates
+      with:
+        apikey: tools.apikey
+        last_edit_id: tools.last_edit_id
+        time: tools.time
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
