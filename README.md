@@ -1,7 +1,8 @@
 # TheGamesDB (thegamesdb)
+
 An open, online database for video game fans providing game information, artwork, and metadata via API.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -20,15 +21,16 @@ An open, online database for video game fans providing game information, artwork
 ## Timestamps
 
 - **Created:** 2025-02-08
-- **Modified:** 2026-05-03
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### TheGamesDB API
+
 An open, online database for video game fans providing game information, artwork, and metadata via API. Search and retrieve game details, platform information, game artwork (boxart, screenshots, fanart), genres, developers, and publishers. Requires an API key.
 
-**Human URL:** [https://api.thegamesdb.net/](https://api.thegamesdb.net/)
-**Base URL:** https://api.thegamesdb.net
+- **Human URL:** [https://api.thegamesdb.net/](https://api.thegamesdb.net/)
+- **Base URL:** `https://api.thegamesdb.net`
 
 #### Tags
 
@@ -41,11 +43,13 @@ An open, online database for video game fans providing game information, artwork
 #### Properties
 
 - [Documentation](https://api.thegamesdb.net/)
-- [OpenAPI](openapi/thegamesdb-openapi.yml)
+- [OpenAPI](openapi/thegamesdb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/thegamesdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/thegamesdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 - [Sign Up](https://api.thegamesdb.net/key.php)
-- [JSON Schema - Game Schema](json-schema/thegamesdb-game-schema.json)
-- [JSON Structure - Game Structure](json-structure/thegamesdb-game-structure.json)
-- [JSON-LD Context](json-ld/thegamesdb-context.jsonld)
+- [JSON Schema](json-schema/thegamesdb-game-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/thegamesdb-game-structure.json)
+- [JSON-LD](json-ld/thegamesdb-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 
 ## Common Properties
 
@@ -55,40 +59,13 @@ An open, online database for video game fans providing game information, artwork
 - [GitHub Organization](https://github.com/TheGamesDB)
 - [Spectral Rules](rules/thegamesdb-spectral-rules.yml)
 - [Vocabulary](vocabulary/thegamesdb-vocabulary.yml)
-- [Naftiko Capability - Video Game Discovery](capabilities/video-game-discovery.yaml)
-
-## Authentication
-
-- **API Key Query Parameter:** API key passed as 'apikey' query parameter on all requests
-
-## Rate Limits
-
-- **Monthly Allowance:** 1000 queries per month (20 calls per query = 20,000 total calls)
-
-## Features
-
-- **Game Search:** Search games by name with optional platform filtering
-- **Game Details:** Retrieve complete game metadata by ID including overview, ratings, and system requirements
-- **Platform Catalog:** Full catalog of all gaming platforms with hardware specifications and images
-- **Game Artwork:** Boxart, screenshots, fanart, banners, and clearlogos for games and platforms
-- **Game Updates:** Retrieve games updated since a given timestamp for database synchronization
-- **Reference Data:** Complete lists of genres, developers, and publishers
-- **Batch Requests:** Request multiple game or platform IDs in a single API call
-
-## Use Cases
-
-- **Gaming Applications:** Build game databases, libraries, and collection managers
-- **Media Centers:** Power game scrapers for Emulation Station, Kodi, and similar media centers
-- **Game Collections:** Manage personal or commercial video game collection databases
-- **AI Game Assistant:** Power AI agents that answer questions about video games
-
-## Integrations
-
-- **EmulationStation:** Popular retro gaming frontend using TheGamesDB for scraping
-- **Skraper:** Game scraper tools using the API for artwork and metadata
+- [Rate Limits](https://api.thegamesdb.net/key.php)
+- [Authentication](https://api.thegamesdb.net/key.php)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
