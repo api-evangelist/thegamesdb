@@ -35,7 +35,7 @@ apis:
         url: https://api.thegamesdb.net/
       - type: OpenAPI
         url: openapi/thegamesdb-openapi.yml
-      - type: SignUp
+      - type: Signup
         url: https://api.thegamesdb.net/key.php
       - type: JSONSchema
         url: json-schema/thegamesdb-game-schema.json
@@ -51,7 +51,7 @@ common:
     url: https://thegamesdb.net/
   - type: Documentation
     url: https://api.thegamesdb.net/
-  - type: SignUp
+  - type: Signup
     url: https://api.thegamesdb.net/key.php
   - type: GitHubOrganization
     url: https://github.com/TheGamesDB
