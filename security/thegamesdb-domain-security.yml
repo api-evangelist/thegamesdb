@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: thegamesdb.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 21:15:06 2026 GMT
+  hsts: false
+- host: api.thegamesdb.net
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 16:15:20 2026 GMT
+  hsts: false
+domains:
+- domain: thegamesdb.net
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

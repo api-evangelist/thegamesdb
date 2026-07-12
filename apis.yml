@@ -47,6 +47,8 @@ apis:
         url: json-ld/thegamesdb-context.jsonld
         title: TheGamesDB JSON-LD Context
 common:
+  - type: DomainSecurity
+    url: security/thegamesdb-domain-security.yml
   - type: Website
     url: https://thegamesdb.net/
   - type: Documentation
