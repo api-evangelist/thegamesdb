@@ -1,6 +1,23 @@
+# thegamesdb — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on thegamesdb.net
+#   - query-params-casing: snake @ 91% (n=90)
+#   - operationid-casing: pascal @ 46% (n=26)
+#   - schema-names-casing: pascal @ 100% (n=8)
+#   - schema-properties-casing: snake @ 100% (n=44)
+#   - operation-documents-400: 88% adherence
+#   - operation-documents-403: 100% adherence
+#   - pagination params observed: ['page']
+#   - merge: kept 22 existing, added 5 measured, upgraded 0
+#   - added: servers-expected-domain, query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing
+extends:
+  - spectral:oas
 rules:
-
-  # INFO / METADATA
   info-title-required:
     description: Info object must have a title
     severity: error
@@ -8,7 +25,6 @@ rules:
     then:
       field: title
       function: truthy
-
   info-description-required:
     description: Info object must have a description
     severity: warn
@@ -16,7 +32,6 @@ rules:
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: API version must be defined
     severity: error
@@ -24,8 +39,6 @@ rules:
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: OpenAPI version should be 3.x
     severity: warn
@@ -34,9 +47,7 @@ rules:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\."
-
-  # SERVERS
+        match: ^3\.
   servers-defined:
     description: Servers array must be defined
     severity: error
@@ -44,7 +55,6 @@ rules:
     then:
       field: servers
       function: truthy
-
   servers-https:
     description: Server URLs must use HTTPS
     severity: error
@@ -52,9 +62,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
-  # PATHS
+        match: ^https://
   paths-no-trailing-slash:
     description: Paths must not have trailing slashes
     severity: warn
@@ -62,8 +70,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        notMatch: "/$"
-
+        notMatch: /$
   paths-versioned:
     description: Paths should include a version prefix
     severity: info
@@ -71,9 +78,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^/v[0-9]"
-
-  # OPERATIONS
+        match: ^/v[0-9]
   operation-summary-required:
     description: Operations must have a summary
     severity: error
@@ -81,7 +86,6 @@ rules:
     then:
       field: summary
       function: truthy
-
   operation-description-required:
     description: Operations must have a description
     severity: warn
@@ -89,7 +93,6 @@ rules:
     then:
       field: description
       function: truthy
-
   operation-operationId-required:
     description: Operations must have an operationId
     severity: error
@@ -97,7 +100,6 @@ rules:
     then:
       field: operationId
       function: truthy
-
   operation-tags-required:
     description: Operations must have at least one tag
     severity: warn
@@ -105,7 +107,6 @@ rules:
     then:
       field: tags
       function: truthy
-
   operation-summary-provider-prefix:
     description: Operation summaries should start with 'TheGamesDB'
     severity: info
@@ -113,9 +114,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^TheGamesDB "
-
-  # PARAMETERS
+        match: '^TheGamesDB '
   parameter-apikey-required-in-query:
     description: TheGamesDB requires apikey query parameter on all operations
     severity: warn
@@ -123,7 +122,6 @@ rules:
     then:
       field: required
       function: truthy
-
   parameter-description-required:
     description: Parameters must have descriptions
     severity: warn
@@ -131,7 +129,6 @@ rules:
     then:
       field: description
       function: truthy
-
   parameter-pagination-page:
     description: Paginated endpoints should use 'page' parameter name
     severity: info
@@ -141,9 +138,7 @@ rules:
       function: enumeration
       functionOptions:
         values:
-          - page
-
-  # RESPONSES
+        - page
   response-success-required:
     description: Operations must have at least one success response
     severity: error
@@ -154,24 +149,20 @@ rules:
         schema:
           type: object
           minProperties: 1
-
   response-400-for-query-endpoints:
     description: Query endpoints should document 400 bad input response
     severity: info
     given: $.paths[*][get].responses
     then:
-      field: "400"
+      field: '400'
       function: defined
-
   response-403-for-api-key:
     description: TheGamesDB endpoints should document 403 invalid key response
     severity: warn
     given: $.paths[*][get].responses
     then:
-      field: "403"
+      field: '403'
       function: defined
-
-  # SCHEMAS
   schema-type-defined:
     description: Schema objects should have a type
     severity: warn
@@ -179,8 +170,6 @@ rules:
     then:
       field: type
       function: truthy
-
-  # HTTP METHODS
   get-no-request-body:
     description: GET operations must not have a request body
     severity: error
@@ -188,8 +177,6 @@ rules:
     then:
       field: requestBody
       function: falsy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     description: Descriptions must not be empty
     severity: warn
@@ -197,4 +184,47 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: ".+"
+        match: .+
+  servers-expected-domain:
+    description: Server URLs should be on the thegamesdb.net domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: thegamesdb\.net
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: info
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
