@@ -1,0 +1,97 @@
+swagger: '2.0'
+info:
+  description: API Documentation
+  version: 2.0.0
+  title: TheGamesDB Developers Genres API
+  license:
+    name: GNU General Public License v3.0
+    url: https://github.com/TheGamesDB/TheGamesDBv2/blob/master/LICENSE
+host: api.thegamesdb.net
+basePath: /
+schemes:
+- https
+tags:
+- name: Genres
+paths:
+  /v1/Genres:
+    get:
+      tags:
+      - Genres
+      operationId: Genres
+      summary: Fetch Genres list
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: apikey
+        description: (Required)
+        required: true
+        type: string
+      responses:
+        200:
+          description: result
+          schema:
+            $ref: '#/definitions/Genres'
+        400:
+          description: bad input parameter
+        403:
+          description: bad API key or hit rate-limit cap
+definitions:
+  Genres:
+    allOf:
+    - $ref: '#/definitions/BaseApiResponse'
+    - type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - count
+          - genres
+          properties:
+            count:
+              type: integer
+              minimum: 0
+            genres:
+              type: object
+              additionalProperties:
+                $ref: '#/definitions/Genre'
+  BaseApiResponse:
+    type: object
+    required:
+    - code
+    - status
+    - remaining_monthly_allowance
+    - extra_allowance
+    properties:
+      code:
+        type: integer
+        minimum: 0
+      status:
+        type: string
+      remaining_monthly_allowance:
+        type: integer
+        minimum: 0
+      extra_allowance:
+        type: integer
+        minimum: 0
+    example:
+      code: 200
+      status: Success
+      remaining_monthly_allowance: 257
+      extra_allowance: 0
+  Genre:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id:
+        type: integer
+        minimum: 0
+      name:
+        type: string
+    example:
+      id: 1
+      name: Action

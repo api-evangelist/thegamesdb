@@ -1,0 +1,361 @@
+swagger: '2.0'
+info:
+  description: API Documentation
+  version: 2.0.0
+  title: TheGamesDB Developers Platforms API
+  license:
+    name: GNU General Public License v3.0
+    url: https://github.com/TheGamesDB/TheGamesDBv2/blob/master/LICENSE
+host: api.thegamesdb.net
+basePath: /
+schemes:
+- https
+tags:
+- name: Platforms
+paths:
+  /v1/Platforms:
+    get:
+      tags:
+      - Platforms
+      operationId: Platforms
+      summary: Fetch platforms list
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: apikey
+        description: (Required)
+        required: true
+        type: string
+      - in: query
+        name: fields
+        description: '(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`'
+        required: false
+        type: string
+      responses:
+        200:
+          description: result
+          schema:
+            $ref: '#/definitions/Platforms'
+        400:
+          description: bad input parameter
+        403:
+          description: bad API key or hit rate-limit cap
+  /v1/Platforms/ByPlatformID:
+    get:
+      tags:
+      - Platforms
+      operationId: PlatformsByPlatformID
+      summary: Fetch platforms list by id
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: apikey
+        description: (Required)
+        required: true
+        type: string
+      - in: query
+        name: id
+        description: (Required) - supports `,` delimited list
+        required: true
+        type: integer
+      - in: query
+        name: fields
+        description: '(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`'
+        required: false
+        type: string
+      responses:
+        200:
+          description: result
+          schema:
+            $ref: '#/definitions/PlatformsByPlatformID'
+        400:
+          description: bad input parameter
+        403:
+          description: bad API key or hit rate-limit cap
+  /v1/Platforms/ByPlatformName:
+    get:
+      tags:
+      - Platforms
+      operationId: PlatformsByPlatformName
+      summary: Fetch platforms by name
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: apikey
+        description: (Required)
+        required: true
+        type: string
+      - in: query
+        name: name
+        description: (Required)
+        required: true
+        type: string
+      - in: query
+        name: fields
+        description: '(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`'
+        required: false
+        type: string
+      responses:
+        200:
+          description: result
+          schema:
+            $ref: '#/definitions/PlatformsByPlatformName'
+        400:
+          description: bad input parameter
+        403:
+          description: bad API key or hit rate-limit cap
+  /v1/Platforms/Images:
+    get:
+      tags:
+      - Platforms
+      operationId: PlatformsImages
+      summary: Fetch platform(s) images by platform(s) id
+      description: results can be filtered with `filter[type]` param
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: apikey
+        description: (Required)
+        required: true
+        type: string
+      - in: query
+        name: platforms_id
+        description: (Required) - platform(s) `id` can be obtain from the above platforms api, supports `,` delimited list
+        required: true
+        type: string
+      - in: query
+        name: filter[type]
+        description: '(Optional) - valid `,` delimited options: `fanart`, `banner`, `boxart`'
+        required: false
+        type: string
+      - in: query
+        name: page
+        description: (Optional) - results page offset to return
+        required: false
+        type: integer
+      responses:
+        200:
+          description: result
+          schema:
+            $ref: '#/definitions/PlatformsImages'
+        400:
+          description: bad input parameter
+        403:
+          description: bad API key or hit rate-limit cap
+definitions:
+  Platform:
+    type: object
+    required:
+    - id
+    - name
+    - alias
+    - icon
+    - console
+    - controller
+    - developer
+    properties:
+      id:
+        type: integer
+        minimum: 0
+      name:
+        type: string
+      alias:
+        type: string
+      icon:
+        type: string
+      console:
+        type: string
+      controller:
+        type: string
+      developer:
+        type: string
+      overview:
+        type: string
+    example:
+      id: 25
+      name: 3DO
+      alias: 3do
+      icon: 3do-1336524121.png
+      console: 25.png
+      controller: ''
+      developer: The 3DO Company
+  PlatformsByPlatformID:
+    allOf:
+    - $ref: '#/definitions/BaseApiResponse'
+    - type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - count
+          - platforms
+          properties:
+            count:
+              type: integer
+              minimum: 0
+            platforms:
+              type: object
+              additionalProperties:
+                $ref: '#/definitions/Platform'
+  BaseApiResponse:
+    type: object
+    required:
+    - code
+    - status
+    - remaining_monthly_allowance
+    - extra_allowance
+    properties:
+      code:
+        type: integer
+        minimum: 0
+      status:
+        type: string
+      remaining_monthly_allowance:
+        type: integer
+        minimum: 0
+      extra_allowance:
+        type: integer
+        minimum: 0
+    example:
+      code: 200
+      status: Success
+      remaining_monthly_allowance: 257
+      extra_allowance: 0
+  PaginatedApiResponse:
+    allOf:
+    - $ref: '#/definitions/BaseApiResponse'
+    - type: object
+      required:
+      - pages
+      properties:
+        pages:
+          type: object
+          required:
+          - previous
+          - current
+          - next
+          properties:
+            previous:
+              type: string
+            current:
+              type: string
+            next:
+              type: string
+          example:
+            previous: ''
+            current: https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1
+            next: ''
+  PlatformsByPlatformName:
+    allOf:
+    - $ref: '#/definitions/BaseApiResponse'
+    - type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - count
+          - platforms
+          properties:
+            count:
+              type: integer
+              minimum: 0
+            platforms:
+              type: array
+              items:
+                $ref: '#/definitions/Platform'
+  Platforms:
+    allOf:
+    - $ref: '#/definitions/BaseApiResponse'
+    - type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - count
+          - platforms
+          properties:
+            count:
+              type: integer
+              minimum: 0
+            platforms:
+              type: object
+              additionalProperties:
+                $ref: '#/definitions/Platform'
+  PlatformsImages:
+    allOf:
+    - $ref: '#/definitions/PaginatedApiResponse'
+    - type: object
+      required:
+      - data
+      properties:
+        data:
+          type: object
+          required:
+          - count
+          - base_url
+          - images
+          properties:
+            count:
+              type: integer
+              minimum: 0
+            base_url:
+              $ref: '#/definitions/ImageBaseUrlMeta'
+            images:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/definitions/PlatformImage'
+  PlatformImage:
+    type: object
+    properties:
+      id:
+        type: integer
+        minimum: 0
+      type:
+        type: string
+      filename:
+        type: string
+    example:
+      id: 72
+      type: fanart
+      filename: platform/fanart/12-1.jpg
+  ImageBaseUrlMeta:
+    type: object
+    required:
+    - original
+    - small
+    - thumb
+    - cropped_center_thumb
+    - medium
+    - large
+    properties:
+      original:
+        type: string
+      small:
+        type: string
+      thumb:
+        type: string
+      cropped_center_thumb:
+        type: string
+      medium:
+        type: string
+      large:
+        type: string
+    example:
+      original: https://cdn.thegamsdb.net/images/original/
+      small: https://cdn.thegamsdb.net/images/small/
+      thumb: https://cdn.thegamsdb.net/images/thumb/
+      cropped_center_thumb: https://cdn.thegamsdb.net/images/cropped_center_thumb/
+      medium: https://cdn.thegamsdb.net/images/medium/
+      large: https://cdn.thegamsdb.net/images/large/
