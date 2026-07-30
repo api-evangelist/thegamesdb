@@ -2,9 +2,21 @@ aid: thegamesdb
 name: TheGamesDB
 description: An open, online database for video game fans providing game information, artwork, and metadata via API.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thegamesdb.png
 tags:
   - Database
   - Gaming
@@ -16,36 +28,106 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: thegamesdb:thegamesdb
-    name: TheGamesDB API
-    description: >-
-      An open, online database for video game fans providing game information, artwork, and metadata via API. Search and
-      retrieve game details, platform information, game artwork (boxart, screenshots, fanart), genres, developers, and
-      publishers. Requires an API key.
-    humanURL: https://api.thegamesdb.net/
-    baseURL: https://api.thegamesdb.net
-    tags:
-      - Database
-      - Gaming
-      - Video Games
-      - Metadata
-      - Artwork
-    properties:
-      - type: Documentation
-        url: https://api.thegamesdb.net/
-      - type: OpenAPI
-        url: openapi/thegamesdb-openapi.yml
-      - type: Signup
-        url: https://api.thegamesdb.net/key.php
-      - type: JSONSchema
-        url: json-schema/thegamesdb-game-schema.json
-        title: Game Schema
-      - type: JSONStructure
-        url: json-structure/thegamesdb-game-structure.json
-        title: Game Structure
-      - type: JSONLD
-        url: json-ld/thegamesdb-context.jsonld
-        title: TheGamesDB JSON-LD Context
+- aid: thegamesdb:thegamesdb-developers-api
+  name: TheGamesDB Developers API
+  description: The Developers API from TheGamesDB — 1 operation(s) for developers.
+  humanURL: https://api.thegamesdb.net/
+  baseURL: https://api.thegamesdb.net
+  tags:
+  - Developers
+  properties:
+  - type: OpenAPI
+    url: openapi/thegamesdb-developers-api-openapi.yml
+  - type: Documentation
+    url: https://api.thegamesdb.net/
+  - type: Signup
+    url: https://api.thegamesdb.net/key.php
+  - type: JSONSchema
+    url: json-schema/thegamesdb-game-schema.json
+  - type: JSONStructure
+    url: json-structure/thegamesdb-game-structure.json
+  - type: JSONLD
+    url: json-ld/thegamesdb-context.jsonld
+- aid: thegamesdb:thegamesdb-games-api
+  name: TheGamesDB Games API
+  description: The Games API from TheGamesDB — 6 operation(s) for games.
+  humanURL: https://api.thegamesdb.net/
+  baseURL: https://api.thegamesdb.net
+  tags:
+  - Games
+  properties:
+  - type: OpenAPI
+    url: openapi/thegamesdb-games-api-openapi.yml
+  - type: Documentation
+    url: https://api.thegamesdb.net/
+  - type: Signup
+    url: https://api.thegamesdb.net/key.php
+  - type: JSONSchema
+    url: json-schema/thegamesdb-game-schema.json
+  - type: JSONStructure
+    url: json-structure/thegamesdb-game-structure.json
+  - type: JSONLD
+    url: json-ld/thegamesdb-context.jsonld
+- aid: thegamesdb:thegamesdb-genres-api
+  name: TheGamesDB Genres API
+  description: The Genres API from TheGamesDB — 1 operation(s) for genres.
+  humanURL: https://api.thegamesdb.net/
+  baseURL: https://api.thegamesdb.net
+  tags:
+  - Genres
+  properties:
+  - type: OpenAPI
+    url: openapi/thegamesdb-genres-api-openapi.yml
+  - type: Documentation
+    url: https://api.thegamesdb.net/
+  - type: Signup
+    url: https://api.thegamesdb.net/key.php
+  - type: JSONSchema
+    url: json-schema/thegamesdb-game-schema.json
+  - type: JSONStructure
+    url: json-structure/thegamesdb-game-structure.json
+  - type: JSONLD
+    url: json-ld/thegamesdb-context.jsonld
+- aid: thegamesdb:thegamesdb-platforms-api
+  name: TheGamesDB Platforms API
+  description: The Platforms API from TheGamesDB — 4 operation(s) for platforms.
+  humanURL: https://api.thegamesdb.net/
+  baseURL: https://api.thegamesdb.net
+  tags:
+  - Platforms
+  properties:
+  - type: OpenAPI
+    url: openapi/thegamesdb-platforms-api-openapi.yml
+  - type: Documentation
+    url: https://api.thegamesdb.net/
+  - type: Signup
+    url: https://api.thegamesdb.net/key.php
+  - type: JSONSchema
+    url: json-schema/thegamesdb-game-schema.json
+  - type: JSONStructure
+    url: json-structure/thegamesdb-game-structure.json
+  - type: JSONLD
+    url: json-ld/thegamesdb-context.jsonld
+- aid: thegamesdb:thegamesdb-publishers-api
+  name: TheGamesDB Publishers API
+  description: The Publishers API from TheGamesDB — 1 operation(s) for publishers.
+  humanURL: https://api.thegamesdb.net/
+  baseURL: https://api.thegamesdb.net
+  tags:
+  - Publishers
+  properties:
+  - type: OpenAPI
+    url: openapi/thegamesdb-publishers-api-openapi.yml
+  - type: Documentation
+    url: https://api.thegamesdb.net/
+  - type: Signup
+    url: https://api.thegamesdb.net/key.php
+  - type: JSONSchema
+    url: json-schema/thegamesdb-game-schema.json
+  - type: JSONStructure
+    url: json-structure/thegamesdb-game-structure.json
+  - type: JSONLD
+    url: json-ld/thegamesdb-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/thegamesdb-agentic-access.yml
