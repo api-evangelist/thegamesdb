@@ -1,0 +1,22 @@
+{
+  "provider": "thegamesdb",
+  "sources": [
+    "thegamesdb-developers-api-openapi.yml",
+    "thegamesdb-games-api-openapi.yml",
+    "thegamesdb-genres-api-openapi.yml",
+    "thegamesdb-platforms-api-openapi.yml",
+    "thegamesdb-publishers-api-openapi.yml"
+  ],
+  "outputs": [
+    "thegamesdb-developers-api-openapi.yml",
+    "thegamesdb-games-api-openapi.yml",
+    "thegamesdb-genres-api-openapi.yml",
+    "thegamesdb-platforms-api-openapi.yml",
+    "thegamesdb-publishers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

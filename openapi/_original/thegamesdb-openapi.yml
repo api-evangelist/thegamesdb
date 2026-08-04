@@ -1,0 +1,1094 @@
+openapi: 3.0.3
+info:
+  title: TheGamesDB API
+  description: >-
+    An open, online database for video game fans providing game information,
+    artwork, and metadata via API. Search games by name, platform, ID, or
+    publisher. Access platform information, genres, developers, and publishers.
+    Requires an API key obtained at api.thegamesdb.net/key.php.
+  version: "2.0.0"
+  contact:
+    url: https://thegamesdb.net/
+  license:
+    name: GNU General Public License v3.0
+    url: https://github.com/TheGamesDB/TheGamesDBv2/blob/master/LICENSE
+  x-generated-from: official-swagger-spec
+servers:
+  - url: https://api.thegamesdb.net
+    description: Production API server
+security: []
+tags:
+  - name: Games
+    description: Game information, search, and artwork
+  - name: Platforms
+    description: Gaming platform information
+  - name: Genres
+    description: Game genres
+  - name: Developers
+    description: Game developers
+  - name: Publishers
+    description: Game publishers
+paths:
+  /v1/Games/ByGameID:
+    get:
+      operationId: gamesByGameID
+      summary: TheGamesDB Fetch Games by ID
+      description: >-
+        Fetch game details by one or more game IDs. Additional fields can be
+        requested via 'fields' parameter. Related data like boxart and platform
+        information can be included via 'include' parameter.
+      tags:
+        - Games
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: Game ID or comma-delimited list of game IDs
+          required: true
+          schema:
+            type: string
+            example: "1,2,3"
+        - name: fields
+          in: query
+          description: "Comma-delimited optional fields: players, publishers, genres, overview, last_updated, rating, platform, coop, youtube, os, processor, ram, hdd, video, sound, alternates"
+          required: false
+          schema:
+            type: string
+            example: "players,genres,overview"
+        - name: include
+          in: query
+          description: "Comma-delimited optional includes: boxart, platform"
+          required: false
+          schema:
+            type: string
+            example: "boxart,platform"
+        - name: page
+          in: query
+          description: Results page offset to return
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Game details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesByGameIDResponse'
+              examples:
+                GamesByGameID200Example:
+                  summary: Default gamesByGameID 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 1
+                      games:
+                        - id: 1
+                          game_title: "Halo: Combat Evolved"
+                          release_date: "2001-11-15"
+                          platform: 14
+                          overview: "Halo is a military science fiction first-person shooter video game."
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Games/ByGameName:
+    get:
+      operationId: gamesByGameNameV1
+      summary: TheGamesDB Fetch Games by Name (v1)
+      description: >-
+        Search for games by name. Returns games matching the search term.
+        Additional fields and includes available.
+      tags:
+        - Games
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Game name search term
+          required: true
+          schema:
+            type: string
+            example: "Halo"
+        - name: fields
+          in: query
+          description: "Comma-delimited optional fields: players, publishers, genres, overview, last_updated, rating, platform, coop, youtube, os, processor, ram, hdd, video, sound, alternates"
+          required: false
+          schema:
+            type: string
+        - name: filter[platform]
+          in: query
+          description: Filter by platform ID (comma-delimited list)
+          required: false
+          schema:
+            type: string
+        - name: include
+          in: query
+          description: "Comma-delimited optional includes: boxart, platform"
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Results page offset
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Games matching the search term
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesByGameIDResponse'
+              examples:
+                GamesByGameNameV1200Example:
+                  summary: Default gamesByGameNameV1 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 1
+                      games:
+                        - id: 1
+                          game_title: "Halo: Combat Evolved"
+                          platform: 14
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1.1/Games/ByGameName:
+    get:
+      operationId: gamesByGameName
+      summary: TheGamesDB Fetch Games by Name (v1.1)
+      description: >-
+        Search for games by name (v1.1 with improved result format).
+        Returns games matching the search term with additional metadata.
+      tags:
+        - Games
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Game name search term
+          required: true
+          schema:
+            type: string
+            example: "Mario"
+        - name: fields
+          in: query
+          description: "Comma-delimited optional fields"
+          required: false
+          schema:
+            type: string
+        - name: filter[platform]
+          in: query
+          description: Filter by platform ID (comma-delimited)
+          required: false
+          schema:
+            type: string
+        - name: include
+          in: query
+          description: "Comma-delimited optional includes: boxart, platform"
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Results page offset
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Games matching the search term
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesByGameIDResponse'
+              examples:
+                GamesByGameName200Example:
+                  summary: Default gamesByGameName 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 2
+                      games:
+                        - id: 136
+                          game_title: "Super Mario Bros."
+                          platform: 3
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Games/ByPlatformID:
+    get:
+      operationId: gamesByPlatformID
+      summary: TheGamesDB Fetch Games by Platform ID
+      description: >-
+        Fetch games associated with one or more platform IDs. Useful for
+        browsing all games for a specific console or gaming system.
+      tags:
+        - Games
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: Platform ID or comma-delimited list of platform IDs
+          required: true
+          schema:
+            type: string
+            example: "14"
+        - name: fields
+          in: query
+          description: "Comma-delimited optional fields"
+          required: false
+          schema:
+            type: string
+        - name: include
+          in: query
+          description: "Comma-delimited optional includes: boxart, platform"
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Results page offset
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Games for the specified platform(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesByGameIDResponse'
+              examples:
+                GamesByPlatformID200Example:
+                  summary: Default gamesByPlatformID 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 1
+                      games:
+                        - id: 1
+                          game_title: "Halo: Combat Evolved"
+                          platform: 14
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Games/Images:
+    get:
+      operationId: gamesImages
+      summary: TheGamesDB Fetch Game Images
+      description: >-
+        Retrieve artwork and images for one or more games by game ID.
+        Returns boxart, screenshots, fanart, banners, and clearlogos.
+      tags:
+        - Games
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: games_id
+          in: query
+          description: Game ID or comma-delimited list of game IDs
+          required: true
+          schema:
+            type: string
+            example: "1"
+        - name: filter[type]
+          in: query
+          description: Filter by image type (boxart, screenshot, fanart, banner, clearlogo)
+          required: false
+          schema:
+            type: string
+            enum:
+              - boxart
+              - screenshot
+              - fanart
+              - banner
+              - clearlogo
+        - name: page
+          in: query
+          description: Results page offset
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Game images
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesImagesResponse'
+              examples:
+                GamesImages200Example:
+                  summary: Default gamesImages 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 3
+                      images:
+                        "1":
+                          - id: 1
+                            type: boxart
+                            side: front
+                            filename: boxart/original/front/1-1.jpg
+                            resolution: "800x1200"
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Games/Updates:
+    get:
+      operationId: gamesUpdates
+      summary: TheGamesDB Fetch Games Updated Since Timestamp
+      description: >-
+        Fetch a list of games that have been updated since a given Unix
+        timestamp. Useful for syncing local databases.
+      tags:
+        - Games
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: last_edit_id
+          in: query
+          description: Unix timestamp to fetch updates since
+          required: true
+          schema:
+            type: integer
+            example: 1609459200
+        - name: time
+          in: query
+          description: Unix timestamp for filtering
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: Results page offset
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of updated games
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesUpdatesResponse'
+              examples:
+                GamesUpdates200Example:
+                  summary: Default gamesUpdates 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 5
+                      updates:
+                        - game_id: 1
+                          edit_id: 1000
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Platforms:
+    get:
+      operationId: platforms
+      summary: TheGamesDB Fetch All Platforms
+      description: >-
+        Retrieve a list of all gaming platforms in the database with their
+        IDs, names, and metadata.
+      tags:
+        - Platforms
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: "Comma-delimited optional fields: icon, console, controller, developer, manufacturer, media, cpu, memory, graphics, sound, maxcontrollers, display, overview, youtube"
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of all platforms
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformsResponse'
+              examples:
+                Platforms200Example:
+                  summary: Default platforms 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 3
+                      platforms:
+                        "3": {id: 3, name: "Nintendo Entertainment System (NES)", alias: "nes"}
+                        "14": {id: 14, name: "Microsoft Xbox", alias: "microsoft-xbox"}
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Platforms/ByPlatformID:
+    get:
+      operationId: platformsByPlatformID
+      summary: TheGamesDB Fetch Platforms by ID
+      description: >-
+        Retrieve details for specific gaming platforms by their IDs.
+      tags:
+        - Platforms
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: query
+          description: Platform ID or comma-delimited list of platform IDs
+          required: true
+          schema:
+            type: string
+            example: "3,14"
+        - name: fields
+          in: query
+          description: "Comma-delimited optional platform detail fields"
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Platform details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformsResponse'
+              examples:
+                PlatformsByPlatformID200Example:
+                  summary: Default platformsByPlatformID 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 1
+                      platforms:
+                        "14": {id: 14, name: "Microsoft Xbox", alias: "microsoft-xbox"}
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Platforms/ByPlatformName:
+    get:
+      operationId: platformsByPlatformName
+      summary: TheGamesDB Fetch Platforms by Name
+      description: >-
+        Search for gaming platforms by name.
+      tags:
+        - Platforms
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: name
+          in: query
+          description: Platform name to search
+          required: true
+          schema:
+            type: string
+            example: "Xbox"
+        - name: fields
+          in: query
+          description: "Comma-delimited optional platform detail fields"
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Platforms matching the search term
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformsResponse'
+              examples:
+                PlatformsByPlatformName200Example:
+                  summary: Default platformsByPlatformName 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 1
+                      platforms:
+                        "14": {id: 14, name: "Microsoft Xbox", alias: "microsoft-xbox"}
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Platforms/Images:
+    get:
+      operationId: platformsImages
+      summary: TheGamesDB Fetch Platform Images
+      description: >-
+        Retrieve artwork and images for one or more gaming platforms by platform ID.
+      tags:
+        - Platforms
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+        - name: platforms_id
+          in: query
+          description: Platform ID or comma-delimited list of platform IDs
+          required: true
+          schema:
+            type: string
+            example: "14"
+        - name: filter[type]
+          in: query
+          description: Filter by image type (fanart, banner, boxart)
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Results page offset
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Platform images
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesImagesResponse'
+              examples:
+                PlatformsImages200Example:
+                  summary: Default platformsImages 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 1
+                      images:
+                        "14":
+                          - id: 100
+                            type: fanart
+                            filename: fanart/original/14-1.jpg
+        '400':
+          description: Bad input parameter
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Genres:
+    get:
+      operationId: genres
+      summary: TheGamesDB Fetch All Genres
+      description: >-
+        Retrieve a list of all game genres in the database.
+      tags:
+        - Genres
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of all genres
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenresDevelopersPublishersResponse'
+              examples:
+                Genres200Example:
+                  summary: Default genres 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 3
+                      genres:
+                        "1": {id: 1, name: "Action"}
+                        "2": {id: 2, name: "RPG"}
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Developers:
+    get:
+      operationId: developers
+      summary: TheGamesDB Fetch All Developers
+      description: >-
+        Retrieve a list of all game developers in the database.
+      tags:
+        - Developers
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of all developers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenresDevelopersPublishersResponse'
+              examples:
+                Developers200Example:
+                  summary: Default developers 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 2
+                      developers:
+                        "1": {id: 1, name: "Bungie"}
+                        "2": {id: 2, name: "Nintendo"}
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /v1/Publishers:
+    get:
+      operationId: publishers
+      summary: TheGamesDB Fetch All Publishers
+      description: >-
+        Retrieve a list of all game publishers in the database.
+      tags:
+        - Publishers
+      parameters:
+        - name: apikey
+          in: query
+          description: API key (required)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of all publishers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenresDevelopersPublishersResponse'
+              examples:
+                Publishers200Example:
+                  summary: Default publishers 200 response
+                  x-microcks-default: true
+                  value:
+                    code: 200
+                    status: Success
+                    data:
+                      count: 2
+                      publishers:
+                        "1": {id: 1, name: "Microsoft"}
+                        "2": {id: 2, name: "Nintendo"}
+        '403':
+          description: Invalid API key or rate limit exceeded
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+    Game:
+      type: object
+      description: Video game details
+      properties:
+        id:
+          type: integer
+          description: Unique game identifier
+          example: 1
+        game_title:
+          type: string
+          description: Official game title
+          example: "Halo: Combat Evolved"
+        release_date:
+          type: string
+          description: Release date
+          example: "2001-11-15"
+        platform:
+          type: integer
+          description: Platform ID
+          example: 14
+        region_id:
+          type: integer
+          description: Region identifier
+          nullable: true
+        country_id:
+          type: integer
+          description: Country identifier
+          nullable: true
+        overview:
+          type: string
+          description: Game description/overview
+          nullable: true
+        youtube:
+          type: string
+          description: YouTube trailer URL
+          nullable: true
+        players:
+          type: integer
+          description: Number of players supported
+          nullable: true
+        coop:
+          type: string
+          description: Co-operative play supported
+          nullable: true
+        rating:
+          type: string
+          description: Content rating (ESRB, PEGI, etc.)
+          nullable: true
+        alternates:
+          type: array
+          description: Alternate game titles
+          nullable: true
+          items:
+            type: string
+
+    GamesByGameIDResponse:
+      type: object
+      description: API response for game queries
+      properties:
+        code:
+          type: integer
+          description: HTTP response code
+          example: 200
+        status:
+          type: string
+          description: Response status message
+          example: Success
+        remaining_monthly_allowance:
+          type: integer
+          description: Remaining API calls this month
+        extra_allowance:
+          type: integer
+          description: Additional allowance
+        data:
+          type: object
+          description: Response data payload
+          properties:
+            count:
+              type: integer
+              description: Number of results
+            games:
+              type: array
+              description: Array of game objects
+              items:
+                $ref: '#/components/schemas/Game'
+
+    GameImage:
+      type: object
+      description: Game or platform artwork image
+      properties:
+        id:
+          type: integer
+          description: Image identifier
+        type:
+          type: string
+          description: Image type
+          enum:
+            - boxart
+            - screenshot
+            - fanart
+            - banner
+            - clearlogo
+        side:
+          type: string
+          description: Image side for boxart (front/back)
+          nullable: true
+        filename:
+          type: string
+          description: Image filename path
+        resolution:
+          type: string
+          description: Image resolution (WxH)
+          nullable: true
+
+    GamesImagesResponse:
+      type: object
+      description: API response for game/platform image queries
+      properties:
+        code:
+          type: integer
+          description: HTTP response code
+        status:
+          type: string
+          description: Response status
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Number of images
+            images:
+              type: object
+              description: Images keyed by game/platform ID
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GameImage'
+            base_url:
+              type: object
+              description: Base URL components for constructing image URLs
+              properties:
+                original:
+                  type: string
+                medium:
+                  type: string
+                small:
+                  type: string
+                large:
+                  type: string
+                thumb:
+                  type: string
+
+    GamesUpdatesResponse:
+      type: object
+      description: API response for game updates
+      properties:
+        code:
+          type: integer
+          description: HTTP response code
+        status:
+          type: string
+          description: Response status
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+            updates:
+              type: array
+              items:
+                type: object
+                properties:
+                  game_id:
+                    type: integer
+                  edit_id:
+                    type: integer
+
+    Platform:
+      type: object
+      description: Gaming platform details
+      properties:
+        id:
+          type: integer
+          description: Platform identifier
+          example: 14
+        name:
+          type: string
+          description: Platform name
+          example: "Microsoft Xbox"
+        alias:
+          type: string
+          description: URL-friendly platform alias
+          example: "microsoft-xbox"
+        icon:
+          type: string
+          description: Platform icon filename
+          nullable: true
+        console:
+          type: string
+          description: Console image filename
+          nullable: true
+        controller:
+          type: string
+          description: Controller image filename
+          nullable: true
+        developer:
+          type: string
+          description: Platform developer name
+          nullable: true
+        manufacturer:
+          type: string
+          description: Platform manufacturer
+          nullable: true
+        overview:
+          type: string
+          description: Platform overview/description
+          nullable: true
+        youtube:
+          type: string
+          description: YouTube URL
+          nullable: true
+
+    PlatformsResponse:
+      type: object
+      description: API response for platform queries
+      properties:
+        code:
+          type: integer
+          description: HTTP response code
+        status:
+          type: string
+          description: Response status
+        data:
+          type: object
+          properties:
+            count:
+              type: integer
+              description: Number of platforms
+            platforms:
+              type: object
+              description: Platforms keyed by platform ID
+              additionalProperties:
+                $ref: '#/components/schemas/Platform'
+
+    GenresDevelopersPublishersResponse:
+      type: object
+      description: API response for genres, developers, or publishers
+      properties:
+        code:
+          type: integer
+          description: HTTP response code
+        status:
+          type: string
+          description: Response status
+        data:
+          type: object
+          description: Response data containing genres, developers, or publishers
+          properties:
+            count:
+              type: integer
+              description: Number of results
+            genres:
+              type: object
+              description: Genres keyed by ID (when querying genres)
+              nullable: true
+              additionalProperties:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            developers:
+              type: object
+              description: Developers keyed by ID (when querying developers)
+              nullable: true
+              additionalProperties:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+            publishers:
+              type: object
+              description: Publishers keyed by ID (when querying publishers)
+              nullable: true
+              additionalProperties:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
