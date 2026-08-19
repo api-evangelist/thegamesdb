@@ -1,0 +1,1409 @@
+{
+  "item": [
+    {
+      "id": "49b75a69-dee5-4a6d-bea9-a0b114cdfb5d",
+      "name": "Games",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dadb15d6-77fb-4c2c-92ff-59c0720b660b",
+          "name": "Fetch game(s) by id",
+          "request": {
+            "name": "Fetch game(s) by id",
+            "description": {
+              "content": "can request additional information can be requestes through `fields` and `include` params",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "Games",
+                "ByGameID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) (Required) - supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`, `rating`, `platform`, `coop`, `youtube`, `os`, `processor`, `ram`, `hdd`, `video`, `sound`, `alternates`"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `boxart`, `platform`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "703958a5-2f32-45ad-98d3-f47c81934e98",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByGameID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4122,\n  \"data\": {\n    \"count\": 6341,\n    \"games\": [\n      {\n        \"id\": 8669,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 8665,\n        \"players\": 64,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          322,\n          4980\n        ],\n        \"genres\": [\n          9773,\n          9541\n        ],\n        \"publishers\": [\n          4864,\n          9775\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 6183,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 5459,\n        \"players\": 6749,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          5502,\n          6896\n        ],\n        \"genres\": [\n          4590,\n          6611\n        ],\n        \"publishers\": [\n          3410,\n          3374\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  \"extra_allowance\": 5353,\n  \"include\": {\n    \"boxart\": {\n      \"base_url\": {\n        \"original\": \"https://cdn.thegamsdb.net/images/original/\",\n        \"small\": \"https://cdn.thegamsdb.net/images/small/\",\n        \"thumb\": \"https://cdn.thegamsdb.net/images/thumb/\",\n        \"cropped_center_thumb\": \"https://cdn.thegamsdb.net/images/cropped_center_thumb/\",\n        \"medium\": \"https://cdn.thegamsdb.net/images/medium/\",\n        \"large\": \"https://cdn.thegamsdb.net/images/large/\"\n      },\n      \"data\": {\n        \"key_0\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ]\n      }\n    },\n    \"platform\": {\n      \"data\": {\n        \"key_0\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        },\n        \"key_1\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        },\n        \"key_2\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        },\n        \"key_3\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        }\n      }\n    }\n  },\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 6344,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a86516e-bc8a-42df-a77f-f669cf637a8a",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByGameID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13eba2a6-4a0a-477a-8007-a72e4ba9bf14",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByGameID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76aa6013-31fe-4ebe-842d-2e5569b41532",
+          "name": "Fetch game(s) by name",
+          "request": {
+            "name": "Fetch game(s) by name",
+            "description": {
+              "content": "can request additional information can be requestes through `fields` and `include` params",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "Games",
+                "ByGameName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) (Required) - Search term"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`, `rating`, `platform`, `coop`, `youtube`, `os`, `processor`, `ram`, `hdd`, `video`, `sound`, `alternates`"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[platform]",
+                  "value": "<string>",
+                  "description": "(Optional) - platform `id` can be obtain from the platforms api below, supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `boxart`, `platform`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ad07cf4-4fac-45f8-9855-6f12c2a1c8f3",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByGameName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[platform]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8151,\n  \"data\": {\n    \"count\": 6480,\n    \"games\": [\n      {\n        \"id\": 959,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 3880,\n        \"players\": 9899,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          9132,\n          8362\n        ],\n        \"genres\": [\n          3750,\n          2154\n        ],\n        \"publishers\": [\n          6710,\n          2060\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 4627,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 3718,\n        \"players\": 4789,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          7706,\n          4694\n        ],\n        \"genres\": [\n          7470,\n          8105\n        ],\n        \"publishers\": [\n          8174,\n          9292\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  \"extra_allowance\": 6070,\n  \"include\": {\n    \"boxart\": {\n      \"base_url\": {\n        \"original\": \"https://cdn.thegamsdb.net/images/original/\",\n        \"small\": \"https://cdn.thegamsdb.net/images/small/\",\n        \"thumb\": \"https://cdn.thegamsdb.net/images/thumb/\",\n        \"cropped_center_thumb\": \"https://cdn.thegamsdb.net/images/cropped_center_thumb/\",\n        \"medium\": \"https://cdn.thegamsdb.net/images/medium/\",\n        \"large\": \"https://cdn.thegamsdb.net/images/large/\"\n      },\n      \"data\": {\n        \"key_0\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ]\n      }\n    },\n    \"platform\": {\n      \"key_0\": {\n        \"id\": 3,\n        \"name\": \"Nintendo 64\",\n        \"alias\": \"nintendo-64\"\n      }\n    }\n  },\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 5088,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc8d1df3-3bc7-44df-af70-15b5ba50cb17",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByGameName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[platform]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88b9ba3d-574b-4a4a-bc92-6d7c4158de55",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByGameName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[platform]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1c79898-a4f1-471e-b226-0ca0948eb5ff",
+          "name": "Fetch game(s) by name",
+          "request": {
+            "name": "Fetch game(s) by name",
+            "description": {
+              "content": "can request additional information can be requestes through `fields` and `include` params",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1.1",
+                "Games",
+                "ByGameName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) (Required) - Search term"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`, `rating`, `platform`, `coop`, `youtube`, `os`, `processor`, `ram`, `hdd`, `video`, `sound`, `alternates`"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[platform]",
+                  "value": "<string>",
+                  "description": "(Optional) - platform `id` can be obtain from the platforms api below, supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `boxart`, `platform`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e701e68b-b98d-4ca0-a071-12e97f1d6831",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "Games",
+                    "ByGameName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[platform]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1456,\n  \"data\": {\n    \"count\": 6894,\n    \"games\": [\n      {\n        \"id\": 784,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 3126,\n        \"players\": 8845,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          7398,\n          5330\n        ],\n        \"genres\": [\n          5920,\n          6193\n        ],\n        \"publishers\": [\n          2935,\n          8906\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 1680,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 9233,\n        \"players\": 470,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          1649,\n          9949\n        ],\n        \"genres\": [\n          4309,\n          7106\n        ],\n        \"publishers\": [\n          8088,\n          5196\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  \"extra_allowance\": 7709,\n  \"include\": {\n    \"boxart\": {\n      \"base_url\": {\n        \"original\": \"https://cdn.thegamsdb.net/images/original/\",\n        \"small\": \"https://cdn.thegamsdb.net/images/small/\",\n        \"thumb\": \"https://cdn.thegamsdb.net/images/thumb/\",\n        \"cropped_center_thumb\": \"https://cdn.thegamsdb.net/images/cropped_center_thumb/\",\n        \"medium\": \"https://cdn.thegamsdb.net/images/medium/\",\n        \"large\": \"https://cdn.thegamsdb.net/images/large/\"\n      },\n      \"data\": {\n        \"key_0\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ]\n      }\n    },\n    \"platform\": {\n      \"data\": {\n        \"key_0\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        },\n        \"key_1\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        }\n      }\n    }\n  },\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 5253,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "903c171f-8cb3-4572-bd3a-1e51116ed9d0",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "Games",
+                    "ByGameName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[platform]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c5f73e0c-24d6-4d13-a9d8-c85a2a8dcc24",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1.1",
+                    "Games",
+                    "ByGameName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[platform]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ed5b3dc-9ee9-451d-b7cb-0cf29afa485f",
+          "name": "Fetch game(s) by platform id",
+          "request": {
+            "name": "Fetch game(s) by platform id",
+            "description": {
+              "content": "can request additional information can be requested through `fields` and `include` params",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "Games",
+                "ByPlatformID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) (Required) - platform `id` can be obtain from the platforms api below, supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `players`, `publishers`, `genres`, `overview`, `last_updated`, `rating`, `platform`, `coop`, `youtube`, `os`, `processor`, `ram`, `hdd`, `video`, `sound`, `alternates`"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `boxart`, `platform`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8967a69-df8d-4787-acc7-22b07c633d65",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByPlatformID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1456,\n  \"data\": {\n    \"count\": 6894,\n    \"games\": [\n      {\n        \"id\": 784,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 3126,\n        \"players\": 8845,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          7398,\n          5330\n        ],\n        \"genres\": [\n          5920,\n          6193\n        ],\n        \"publishers\": [\n          2935,\n          8906\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 1680,\n        \"game_title\": \"string\",\n        \"release_date\": \"string\",\n        \"platform\": 9233,\n        \"players\": 470,\n        \"overview\": \"string\",\n        \"last_updated\": \"string\",\n        \"rating\": \"string\",\n        \"coop\": \"string\",\n        \"youtube\": \"string\",\n        \"os\": \"string\",\n        \"processor\": \"string\",\n        \"ram\": \"string\",\n        \"hdd\": \"string\",\n        \"video\": \"string\",\n        \"sound\": \"string\",\n        \"developers\": [\n          1649,\n          9949\n        ],\n        \"genres\": [\n          4309,\n          7106\n        ],\n        \"publishers\": [\n          8088,\n          5196\n        ],\n        \"alternates\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  \"extra_allowance\": 7709,\n  \"include\": {\n    \"boxart\": {\n      \"base_url\": {\n        \"original\": \"https://cdn.thegamsdb.net/images/original/\",\n        \"small\": \"https://cdn.thegamsdb.net/images/small/\",\n        \"thumb\": \"https://cdn.thegamsdb.net/images/thumb/\",\n        \"cropped_center_thumb\": \"https://cdn.thegamsdb.net/images/cropped_center_thumb/\",\n        \"medium\": \"https://cdn.thegamsdb.net/images/medium/\",\n        \"large\": \"https://cdn.thegamsdb.net/images/large/\"\n      },\n      \"data\": {\n        \"key_0\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          },\n          {\n            \"id\": 23413,\n            \"type\": \"boxart\",\n            \"side\": \"front\",\n            \"filename\": \"boxart/front/1-1.jpg\",\n            \"resolution\": \"1529x2156\"\n          }\n        ]\n      }\n    },\n    \"platform\": {\n      \"data\": {\n        \"key_0\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        },\n        \"key_1\": {\n          \"id\": 3,\n          \"name\": \"Nintendo 64\",\n          \"alias\": \"nintendo-64\"\n        }\n      }\n    }\n  },\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 5253,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8243c8aa-1545-4e89-b3c5-8db412735854",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByPlatformID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aafe6b82-b460-4b27-966e-429d7e5da17f",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "ByPlatformID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db430ce9-e6b5-48ed-a8d6-b09dc8ed12d7",
+          "name": "Fetch game(s) images by game(s) id",
+          "request": {
+            "name": "Fetch game(s) images by game(s) id",
+            "description": {
+              "content": "results can be filtered with `filter[type]` param",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "Games",
+                "Images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "games_id",
+                  "value": "<string>",
+                  "description": "(Required) (Required) - game(s) `id` can be obtain from the above games api, supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[type]",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `fanart`, `banner`, `boxart`, `screenshot`, `clearlogo`, `titlescreen`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62698ee7-5f8b-4d5c-86c0-82e5e1bf381e",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "Images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "games_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4483,\n  \"data\": {\n    \"count\": 5905,\n    \"base_url\": {\n      \"original\": \"https://cdn.thegamsdb.net/images/original/\",\n      \"small\": \"https://cdn.thegamsdb.net/images/small/\",\n      \"thumb\": \"https://cdn.thegamsdb.net/images/thumb/\",\n      \"cropped_center_thumb\": \"https://cdn.thegamsdb.net/images/cropped_center_thumb/\",\n      \"medium\": \"https://cdn.thegamsdb.net/images/medium/\",\n      \"large\": \"https://cdn.thegamsdb.net/images/large/\"\n    },\n    \"images\": {\n      \"key_0\": [\n        {\n          \"id\": 23413,\n          \"type\": \"boxart\",\n          \"side\": \"front\",\n          \"filename\": \"boxart/front/1-1.jpg\",\n          \"resolution\": \"1529x2156\"\n        },\n        {\n          \"id\": 23413,\n          \"type\": \"boxart\",\n          \"side\": \"front\",\n          \"filename\": \"boxart/front/1-1.jpg\",\n          \"resolution\": \"1529x2156\"\n        }\n      ],\n      \"key_1\": [\n        {\n          \"id\": 23413,\n          \"type\": \"boxart\",\n          \"side\": \"front\",\n          \"filename\": \"boxart/front/1-1.jpg\",\n          \"resolution\": \"1529x2156\"\n        },\n        {\n          \"id\": 23413,\n          \"type\": \"boxart\",\n          \"side\": \"front\",\n          \"filename\": \"boxart/front/1-1.jpg\",\n          \"resolution\": \"1529x2156\"\n        }\n      ]\n    }\n  },\n  \"extra_allowance\": 4183,\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 2585,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60375b75-ec3c-44cf-b9e9-7d40c05e2159",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "Images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "games_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffab70f8-0752-4b0f-bb38-3f962347b479",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "Images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "games_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1116d830-fc8f-4a5c-beaa-5aa61c5908a9",
+          "name": "Fetch games update",
+          "request": {
+            "name": "Fetch games update",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "Games",
+                "Updates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_edit_id",
+                  "value": "<integer>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "time",
+                  "value": "<integer>",
+                  "description": "(Optional)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2502da3c-3776-4d59-8aa4-0921818c0959",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "Updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_edit_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8817,\n  \"data\": {\n    \"count\": 4851,\n    \"updates\": [\n      {\n        \"edit_id\": 23159,\n        \"game_id\": 60901,\n        \"timestamp\": \"2018-09-05 21:21:27\",\n        \"type\": \"boxart\",\n        \"value\": \"boxart/front/60901-1.jpg\"\n      },\n      {\n        \"edit_id\": 23159,\n        \"game_id\": 60901,\n        \"timestamp\": \"2018-09-05 21:21:27\",\n        \"type\": \"boxart\",\n        \"value\": \"boxart/front/60901-1.jpg\"\n      }\n    ]\n  },\n  \"extra_allowance\": 6601,\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 2066,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdd95744-5762-4ed2-9aca-5d2fdb3f4792",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "Updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_edit_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ca36841-8f2c-4314-9b88-9a26bf74bd4f",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Games",
+                    "Updates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_edit_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thegamesdb.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6056a4de-a486-4d91-8c1f-36467975cc2f",
+    "name": "TheGamesDB Developers Games API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

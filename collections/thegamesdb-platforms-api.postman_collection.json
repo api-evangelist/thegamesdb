@@ -1,0 +1,795 @@
+{
+  "item": [
+    {
+      "id": "02a6624b-4cb7-458a-9c9f-ce4dbdd4176c",
+      "name": "Platforms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfa71b8d-1c0a-4000-a6c1-4154cb9a7287",
+          "name": "Fetch platforms list",
+          "request": {
+            "name": "Fetch platforms list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "Platforms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd78695b-f28d-469c-bdf9-45cdf27d7b22",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2993,\n  \"data\": {\n    \"count\": 9760,\n    \"platforms\": {\n      \"key_0\": {\n        \"id\": 25,\n        \"name\": \"3DO\",\n        \"alias\": \"3do\",\n        \"icon\": \"3do-1336524121.png\",\n        \"console\": \"25.png\",\n        \"controller\": \"\",\n        \"developer\": \"The 3DO Company\"\n      },\n      \"key_1\": {\n        \"id\": 25,\n        \"name\": \"3DO\",\n        \"alias\": \"3do\",\n        \"icon\": \"3do-1336524121.png\",\n        \"console\": \"25.png\",\n        \"controller\": \"\",\n        \"developer\": \"The 3DO Company\"\n      }\n    }\n  },\n  \"extra_allowance\": 2561,\n  \"remaining_monthly_allowance\": 9443,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3429e098-b303-4268-b3f1-71d7b9287b14",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f10f6e2a-3fba-442f-be8e-07739a005fc2",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "684ad06f-7e4e-4ef7-a46d-116fbfd3904c",
+          "name": "Fetch platforms list by id",
+          "request": {
+            "name": "Fetch platforms list by id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "Platforms",
+                "ByPlatformID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) (Required) - supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef68e9d5-9828-4d3f-89e7-c5ddde4f9220",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "ByPlatformID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2993,\n  \"data\": {\n    \"count\": 9760,\n    \"platforms\": {\n      \"key_0\": {\n        \"id\": 25,\n        \"name\": \"3DO\",\n        \"alias\": \"3do\",\n        \"icon\": \"3do-1336524121.png\",\n        \"console\": \"25.png\",\n        \"controller\": \"\",\n        \"developer\": \"The 3DO Company\"\n      },\n      \"key_1\": {\n        \"id\": 25,\n        \"name\": \"3DO\",\n        \"alias\": \"3do\",\n        \"icon\": \"3do-1336524121.png\",\n        \"console\": \"25.png\",\n        \"controller\": \"\",\n        \"developer\": \"The 3DO Company\"\n      }\n    }\n  },\n  \"extra_allowance\": 2561,\n  \"remaining_monthly_allowance\": 9443,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b0c0d7e-001e-4f0d-a86a-a42dab2272b5",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "ByPlatformID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f84f593c-00e1-44eb-aa57-fed655d5177b",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "ByPlatformID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdab95f0-e0b7-46b5-82f4-f37f00c12705",
+          "name": "Fetch platforms by name",
+          "request": {
+            "name": "Fetch platforms by name",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "Platforms",
+                "ByPlatformName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcfb0f22-ffad-482d-bce5-801952a09b5a",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "ByPlatformName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5565,\n  \"data\": {\n    \"count\": 3322,\n    \"platforms\": [\n      {\n        \"id\": 25,\n        \"name\": \"3DO\",\n        \"alias\": \"3do\",\n        \"icon\": \"3do-1336524121.png\",\n        \"console\": \"25.png\",\n        \"controller\": \"\",\n        \"developer\": \"The 3DO Company\"\n      },\n      {\n        \"id\": 25,\n        \"name\": \"3DO\",\n        \"alias\": \"3do\",\n        \"icon\": \"3do-1336524121.png\",\n        \"console\": \"25.png\",\n        \"controller\": \"\",\n        \"developer\": \"The 3DO Company\"\n      }\n    ]\n  },\n  \"extra_allowance\": 8500,\n  \"remaining_monthly_allowance\": 725,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a6aaf95-26ab-4656-80fc-1da3db323222",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "ByPlatformName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "627cde35-973c-441e-a57c-f1c7284dfcc4",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "ByPlatformName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a8b18e3-4198-41b9-8221-fa0b2b401d65",
+          "name": "Fetch platform(s) images by platform(s) id",
+          "request": {
+            "name": "Fetch platform(s) images by platform(s) id",
+            "description": {
+              "content": "results can be filtered with `filter[type]` param",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "Platforms",
+                "Images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                },
+                {
+                  "disabled": false,
+                  "key": "platforms_id",
+                  "value": "<string>",
+                  "description": "(Required) (Required) - platform(s) `id` can be obtain from the above platforms api, supports `,` delimited list"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[type]",
+                  "value": "<string>",
+                  "description": "(Optional) - valid `,` delimited options: `fanart`, `banner`, `boxart`"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "(Optional) - results page offset to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bec9d0c-0eb7-44b2-a663-2ef54d6174a1",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "Images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1957,\n  \"data\": {\n    \"count\": 5896,\n    \"base_url\": {\n      \"original\": \"https://cdn.thegamsdb.net/images/original/\",\n      \"small\": \"https://cdn.thegamsdb.net/images/small/\",\n      \"thumb\": \"https://cdn.thegamsdb.net/images/thumb/\",\n      \"cropped_center_thumb\": \"https://cdn.thegamsdb.net/images/cropped_center_thumb/\",\n      \"medium\": \"https://cdn.thegamsdb.net/images/medium/\",\n      \"large\": \"https://cdn.thegamsdb.net/images/large/\"\n    },\n    \"images\": {\n      \"key_0\": [\n        {\n          \"id\": 72,\n          \"type\": \"fanart\",\n          \"filename\": \"platform/fanart/12-1.jpg\"\n        },\n        {\n          \"id\": 72,\n          \"type\": \"fanart\",\n          \"filename\": \"platform/fanart/12-1.jpg\"\n        }\n      ]\n    }\n  },\n  \"extra_allowance\": 200,\n  \"pages\": {\n    \"previous\": \"\",\n    \"current\": \"https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1\",\n    \"next\": \"\"\n  },\n  \"remaining_monthly_allowance\": 397,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32e87f4e-48ac-41b0-a774-9843ea6e212f",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "Images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2c47ffa-9e4b-4cb2-b774-6f02e3cc27e1",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Platforms",
+                    "Images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platforms_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thegamesdb.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d1f364fd-afe6-4288-8c1f-d0120b354f9c",
+    "name": "TheGamesDB Developers Platforms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

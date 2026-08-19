@@ -1,0 +1,183 @@
+{
+  "item": [
+    {
+      "id": "1a3c434a-7f1c-4506-9d9b-5a8eba1660a5",
+      "name": "Developers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4194950a-dd20-490f-a666-55363399ab42",
+          "name": "Fetch Developers list",
+          "request": {
+            "name": "Fetch Developers list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "Developers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12a04323-9b79-4aa5-a5aa-5609bf5fc68a",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Developers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 8895,\n  \"data\": {\n    \"count\": 7127,\n    \"developers\": {\n      \"key_0\": {\n        \"id\": 202,\n        \"name\": \"Acclaim Studios Manchester\"\n      },\n      \"key_1\": {\n        \"id\": 202,\n        \"name\": \"Acclaim Studios Manchester\"\n      },\n      \"key_2\": {\n        \"id\": 202,\n        \"name\": \"Acclaim Studios Manchester\"\n      },\n      \"key_3\": {\n        \"id\": 202,\n        \"name\": \"Acclaim Studios Manchester\"\n      }\n    }\n  },\n  \"extra_allowance\": 5246,\n  \"remaining_monthly_allowance\": 7800,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6228ddc6-ac7d-4ac9-b789-29e11218cebd",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Developers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "614ba169-16d7-47d8-82d3-b48196af8be1",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Developers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thegamesdb.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a3308f71-62d7-4037-91ed-3436b93c3c0d",
+    "name": "TheGamesDB Developers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "item": [
+    {
+      "id": "39a80051-364f-4264-84b7-aa62fe7bfafd",
+      "name": "Publishers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fbbddd5-0f6d-4d63-9035-0eb73839f3bf",
+          "name": "Fetch Publishers list",
+          "request": {
+            "name": "Fetch Publishers list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "Publishers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apikey",
+                  "value": "<string>",
+                  "description": "(Required) (Required)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b27719c2-ae3f-4f58-b9cb-62f16a151492",
+              "name": "result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Publishers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1603,\n  \"data\": {\n    \"count\": 3345,\n    \"publishers\": {\n      \"key_0\": {\n        \"id\": 2374,\n        \"name\": \".GEARS Studios\"\n      },\n      \"key_1\": {\n        \"id\": 2374,\n        \"name\": \".GEARS Studios\"\n      }\n    }\n  },\n  \"extra_allowance\": 8418,\n  \"remaining_monthly_allowance\": 813,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1124a72f-a55d-4187-93a6-63a0e62e13fe",
+              "name": "bad input parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Publishers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "37d0dcde-4e31-4020-a4a1-a39bc63cf7a3",
+              "name": "bad API key or hit rate-limit cap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Publishers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thegamesdb.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ca412d9-eaec-49e0-9b03-b0ce6c9bf93a",
+    "name": "TheGamesDB Developers Publishers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API Documentation",
+      "type": "text/plain"
+    }
+  }
+}

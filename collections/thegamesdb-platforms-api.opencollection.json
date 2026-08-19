@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheGamesDB Developers Platforms API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platforms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch platforms list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/Platforms",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "(Required)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`"
+              }
+            ]
+          },
+          "docs": "Fetch platforms list"
+        },
+        {
+          "info": {
+            "name": "Fetch platforms list by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/Platforms/ByPlatformID",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "(Required)"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "(Required) - supports `,` delimited list"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`"
+              }
+            ]
+          },
+          "docs": "Fetch platforms list by id"
+        },
+        {
+          "info": {
+            "name": "Fetch platforms by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/Platforms/ByPlatformName",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "(Required)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "(Required)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "(Optional) - valid `,` delimited options: `icon`, `console`, `controller`, `developer`, `manufacturer`, `media`, `cpu`, `memory`, `graphics`, `sound`, `maxcontrollers`, `display`, `overview`, `youtube`"
+              }
+            ]
+          },
+          "docs": "Fetch platforms by name"
+        },
+        {
+          "info": {
+            "name": "Fetch platform(s) images by platform(s) id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/Platforms/Images",
+            "params": [
+              {
+                "name": "apikey",
+                "value": "",
+                "type": "query",
+                "description": "(Required)"
+              },
+              {
+                "name": "platforms_id",
+                "value": "",
+                "type": "query",
+                "description": "(Required) - platform(s) `id` can be obtain from the above platforms api, supports `,` delimited list"
+              },
+              {
+                "name": "filter[type]",
+                "value": "",
+                "type": "query",
+                "description": "(Optional) - valid `,` delimited options: `fanart`, `banner`, `boxart`"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "(Optional) - results page offset to return"
+              }
+            ]
+          },
+          "docs": "results can be filtered with `filter[type]` param"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
