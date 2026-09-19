@@ -106,6 +106,8 @@ apis:
   humanURL: https://api.thegamesdb.net/
   baseURL: https://api.thegamesdb.net
   tags:
+  - Platform
+  tags_raw:
   - Platforms
   properties:
   - type: OpenAPI
