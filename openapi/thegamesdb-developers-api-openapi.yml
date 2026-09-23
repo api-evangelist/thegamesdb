@@ -1,4 +1,4 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   description: API Documentation
   version: 2.0.0
@@ -6,10 +6,8 @@ info:
   license:
     name: GNU General Public License v3.0
     url: https://github.com/TheGamesDB/TheGamesDBv2/blob/master/LICENSE
-host: api.thegamesdb.net
-basePath: /
-schemes:
-- https
+servers:
+- url: https://api.thegamesdb.net/
 tags:
 - name: Developers
 paths:
@@ -19,79 +17,81 @@ paths:
       - Developers
       operationId: Developers
       summary: Fetch Developers list
-      produces:
-      - application/json
       parameters:
       - in: query
         name: apikey
         description: (Required)
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         200:
           description: result
-          schema:
-            $ref: '#/definitions/Developers'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Developers'
         400:
           description: bad input parameter
         403:
           description: bad API key or hit rate-limit cap
-definitions:
-  Developer:
-    type: object
-    required:
-    - id
-    - name
-    properties:
-      id:
-        type: integer
-        minimum: 0
-      name:
-        type: string
-    example:
-      id: 202
-      name: Acclaim Studios Manchester
-  Developers:
-    allOf:
-    - $ref: '#/definitions/BaseApiResponse'
-    - type: object
+components:
+  schemas:
+    Developer:
+      type: object
       required:
-      - data
+      - id
+      - name
       properties:
-        data:
-          type: object
-          required:
-          - count
-          - developers
-          properties:
-            count:
-              type: integer
-              minimum: 0
-            developers:
-              type: object
-              additionalProperties:
-                $ref: '#/definitions/Developer'
-  BaseApiResponse:
-    type: object
-    required:
-    - code
-    - status
-    - remaining_monthly_allowance
-    - extra_allowance
-    properties:
-      code:
-        type: integer
-        minimum: 0
-      status:
-        type: string
-      remaining_monthly_allowance:
-        type: integer
-        minimum: 0
-      extra_allowance:
-        type: integer
-        minimum: 0
-    example:
-      code: 200
-      status: Success
-      remaining_monthly_allowance: 257
-      extra_allowance: 0
+        id:
+          type: integer
+          minimum: 0
+        name:
+          type: string
+      example:
+        id: 202
+        name: Acclaim Studios Manchester
+    Developers:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - developers
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              developers:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Developer'
+    BaseApiResponse:
+      type: object
+      required:
+      - code
+      - status
+      - remaining_monthly_allowance
+      - extra_allowance
+      properties:
+        code:
+          type: integer
+          minimum: 0
+        status:
+          type: string
+        remaining_monthly_allowance:
+          type: integer
+          minimum: 0
+        extra_allowance:
+          type: integer
+          minimum: 0
+      example:
+        code: 200
+        status: Success
+        remaining_monthly_allowance: 257
+        extra_allowance: 0

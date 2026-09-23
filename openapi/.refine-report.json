@@ -1,11 +1,7 @@
 {
   "provider": "thegamesdb",
   "sources": [
-    "thegamesdb-developers-api-openapi.yml",
-    "thegamesdb-games-api-openapi.yml",
-    "thegamesdb-genres-api-openapi.yml",
-    "thegamesdb-platforms-api-openapi.yml",
-    "thegamesdb-publishers-api-openapi.yml"
+    "_original/thegamesdb-openapi.yaml"
   ],
   "outputs": [
     "thegamesdb-developers-api-openapi.yml",
@@ -17,6 +13,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "thegamesdb-openapi.yaml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/thegamesdb-openapi.yml: archived document superseded by a larger archived document",
+    "thegamesdb-developers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thegamesdb-games-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thegamesdb-genres-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thegamesdb-platforms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thegamesdb-publishers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
