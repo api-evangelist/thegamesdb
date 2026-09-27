@@ -37,6 +37,40 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
+    Genre:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          minimum: 0
+        name:
+          type: string
+      example:
+        id: 1
+        name: Action
+    Genres:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - genres
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              genres:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Genre'
     BaseApiResponse:
       type: object
       required:
@@ -61,37 +95,3 @@ components:
         status: Success
         remaining_monthly_allowance: 257
         extra_allowance: 0
-    Genres:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - genres
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              genres:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/Genre'
-    Genre:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: integer
-          minimum: 0
-        name:
-          type: string
-      example:
-        id: 1
-        name: Action

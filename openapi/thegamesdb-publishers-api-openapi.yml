@@ -61,6 +61,20 @@ components:
         status: Success
         remaining_monthly_allowance: 257
         extra_allowance: 0
+    Publisher:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          minimum: 0
+        name:
+          type: string
+      example:
+        id: 2374
+        name: .GEARS Studios
     Publishers:
       allOf:
       - $ref: '#/components/schemas/BaseApiResponse'
@@ -81,17 +95,3 @@ components:
                 type: object
                 additionalProperties:
                   $ref: '#/components/schemas/Publisher'
-    Publisher:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: integer
-          minimum: 0
-        name:
-          type: string
-      example:
-        id: 2374
-        name: .GEARS Studios
