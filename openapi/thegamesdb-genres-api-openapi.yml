@@ -37,20 +37,6 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
-    Genre:
-      type: object
-      required:
-      - id
-      - name
-      properties:
-        id:
-          type: integer
-          minimum: 0
-        name:
-          type: string
-      example:
-        id: 1
-        name: Action
     Genres:
       allOf:
       - $ref: '#/components/schemas/BaseApiResponse'
@@ -71,6 +57,20 @@ components:
                 type: object
                 additionalProperties:
                   $ref: '#/components/schemas/Genre'
+    Genre:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: integer
+          minimum: 0
+        name:
+          type: string
+      example:
+        id: 1
+        name: Action
     BaseApiResponse:
       type: object
       required:

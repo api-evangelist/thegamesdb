@@ -306,24 +306,30 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
-    PlatformSkinny:
+    BaseApiResponse:
       type: object
       required:
-      - id
-      - name
-      - alias
+      - code
+      - status
+      - remaining_monthly_allowance
+      - extra_allowance
       properties:
-        id:
+        code:
           type: integer
           minimum: 0
-        name:
+        status:
           type: string
-        alias:
-          type: string
+        remaining_monthly_allowance:
+          type: integer
+          minimum: 0
+        extra_allowance:
+          type: integer
+          minimum: 0
       example:
-        id: 3
-        name: Nintendo 64
-        alias: nintendo-64
+        code: 200
+        status: Success
+        remaining_monthly_allowance: 257
+        extra_allowance: 0
     GamesImages:
       allOf:
       - $ref: '#/components/schemas/PaginatedApiResponse'
@@ -349,6 +355,213 @@ components:
                   type: array
                   items:
                     $ref: '#/components/schemas/GameImage'
+    GameImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 0
+        type:
+          type: string
+        side:
+          type: string
+        filename:
+          type: string
+        resolution:
+          type: string
+      example:
+        id: 23413
+        type: boxart
+        side: front
+        filename: boxart/front/1-1.jpg
+        resolution: 1529x2156
+    GamesByGameID:
+      allOf:
+      - $ref: '#/components/schemas/PaginatedApiResponse'
+      - type: object
+        required:
+        - data
+        - include
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - games
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              games:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+          include:
+            type: object
+            required:
+            - boxart
+            - platform
+            properties:
+              boxart:
+                type: object
+                required:
+                - base_url
+                - data
+                properties:
+                  base_url:
+                    $ref: '#/components/schemas/ImageBaseUrlMeta'
+                  data:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/GameImage'
+              platform:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/PlatformSkinny'
+    UpdateModel:
+      type: object
+      properties:
+        edit_id:
+          type: integer
+          minimum: 0
+        game_id:
+          type: integer
+          minimum: 0
+        timestamp:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      example:
+        edit_id: 23159
+        game_id: 60901
+        timestamp: '2018-09-05 21:21:27'
+        type: boxart
+        value: boxart/front/60901-1.jpg
+    PaginatedApiResponse:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - pages
+        properties:
+          pages:
+            type: object
+            required:
+            - previous
+            - current
+            - next
+            properties:
+              previous:
+                type: string
+              current:
+                type: string
+              next:
+                type: string
+            example:
+              previous: ''
+              current: https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1
+              next: ''
+    GamesByGameID_v1:
+      allOf:
+      - $ref: '#/components/schemas/PaginatedApiResponse'
+      - type: object
+        required:
+        - data
+        - include
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - games
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              games:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Game'
+          include:
+            type: object
+            required:
+            - boxart
+            - platform
+            properties:
+              boxart:
+                type: object
+                required:
+                - base_url
+                - data
+                properties:
+                  base_url:
+                    $ref: '#/components/schemas/ImageBaseUrlMeta'
+                  data:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/GameImage'
+              platform:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/PlatformSkinny'
+    ImageBaseUrlMeta:
+      type: object
+      required:
+      - original
+      - small
+      - thumb
+      - cropped_center_thumb
+      - medium
+      - large
+      properties:
+        original:
+          type: string
+        small:
+          type: string
+        thumb:
+          type: string
+        cropped_center_thumb:
+          type: string
+        medium:
+          type: string
+        large:
+          type: string
+      example:
+        original: https://cdn.thegamsdb.net/images/original/
+        small: https://cdn.thegamsdb.net/images/small/
+        thumb: https://cdn.thegamsdb.net/images/thumb/
+        cropped_center_thumb: https://cdn.thegamsdb.net/images/cropped_center_thumb/
+        medium: https://cdn.thegamsdb.net/images/medium/
+        large: https://cdn.thegamsdb.net/images/large/
+    PlatformSkinny:
+      type: object
+      required:
+      - id
+      - name
+      - alias
+      properties:
+        id:
+          type: integer
+          minimum: 0
+        name:
+          type: string
+        alias:
+          type: string
+      example:
+        id: 3
+        name: Nintendo 64
+        alias: nintendo-64
     Game:
       type: object
       properties:
@@ -433,219 +646,6 @@ components:
         alternates:
         - Lylat Wars (EU)
         - Lylat Wars
-    GamesByGameID_v1:
-      allOf:
-      - $ref: '#/components/schemas/PaginatedApiResponse'
-      - type: object
-        required:
-        - data
-        - include
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - games
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              games:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Game'
-          include:
-            type: object
-            required:
-            - boxart
-            - platform
-            properties:
-              boxart:
-                type: object
-                required:
-                - base_url
-                - data
-                properties:
-                  base_url:
-                    $ref: '#/components/schemas/ImageBaseUrlMeta'
-                  data:
-                    type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/GameImage'
-              platform:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/PlatformSkinny'
-    ImageBaseUrlMeta:
-      type: object
-      required:
-      - original
-      - small
-      - thumb
-      - cropped_center_thumb
-      - medium
-      - large
-      properties:
-        original:
-          type: string
-        small:
-          type: string
-        thumb:
-          type: string
-        cropped_center_thumb:
-          type: string
-        medium:
-          type: string
-        large:
-          type: string
-      example:
-        original: https://cdn.thegamsdb.net/images/original/
-        small: https://cdn.thegamsdb.net/images/small/
-        thumb: https://cdn.thegamsdb.net/images/thumb/
-        cropped_center_thumb: https://cdn.thegamsdb.net/images/cropped_center_thumb/
-        medium: https://cdn.thegamsdb.net/images/medium/
-        large: https://cdn.thegamsdb.net/images/large/
-    BaseApiResponse:
-      type: object
-      required:
-      - code
-      - status
-      - remaining_monthly_allowance
-      - extra_allowance
-      properties:
-        code:
-          type: integer
-          minimum: 0
-        status:
-          type: string
-        remaining_monthly_allowance:
-          type: integer
-          minimum: 0
-        extra_allowance:
-          type: integer
-          minimum: 0
-      example:
-        code: 200
-        status: Success
-        remaining_monthly_allowance: 257
-        extra_allowance: 0
-    UpdateModel:
-      type: object
-      properties:
-        edit_id:
-          type: integer
-          minimum: 0
-        game_id:
-          type: integer
-          minimum: 0
-        timestamp:
-          type: string
-        type:
-          type: string
-        value:
-          type: string
-      example:
-        edit_id: 23159
-        game_id: 60901
-        timestamp: '2018-09-05 21:21:27'
-        type: boxart
-        value: boxart/front/60901-1.jpg
-    GamesByGameID:
-      allOf:
-      - $ref: '#/components/schemas/PaginatedApiResponse'
-      - type: object
-        required:
-        - data
-        - include
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - games
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              games:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Game'
-          include:
-            type: object
-            required:
-            - boxart
-            - platform
-            properties:
-              boxart:
-                type: object
-                required:
-                - base_url
-                - data
-                properties:
-                  base_url:
-                    $ref: '#/components/schemas/ImageBaseUrlMeta'
-                  data:
-                    type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/GameImage'
-              platform:
-                type: object
-                required:
-                - data
-                properties:
-                  data:
-                    type: object
-                    additionalProperties:
-                      $ref: '#/components/schemas/PlatformSkinny'
-    GameImage:
-      type: object
-      properties:
-        id:
-          type: integer
-          minimum: 0
-        type:
-          type: string
-        side:
-          type: string
-        filename:
-          type: string
-        resolution:
-          type: string
-      example:
-        id: 23413
-        type: boxart
-        side: front
-        filename: boxart/front/1-1.jpg
-        resolution: 1529x2156
-    PaginatedApiResponse:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - pages
-        properties:
-          pages:
-            type: object
-            required:
-            - previous
-            - current
-            - next
-            properties:
-              previous:
-                type: string
-              current:
-                type: string
-              next:
-                type: string
-            example:
-              previous: ''
-              current: https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1
-              next: ''
     GamesUpdates:
       allOf:
       - $ref: '#/components/schemas/PaginatedApiResponse'

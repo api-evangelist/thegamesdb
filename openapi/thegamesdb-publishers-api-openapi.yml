@@ -37,6 +37,26 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
+    Publishers:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - publishers
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              publishers:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Publisher'
     BaseApiResponse:
       type: object
       required:
@@ -75,23 +95,3 @@ components:
       example:
         id: 2374
         name: .GEARS Studios
-    Publishers:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - publishers
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              publishers:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/Publisher'
