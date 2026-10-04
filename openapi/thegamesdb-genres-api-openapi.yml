@@ -37,6 +37,30 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
+    BaseApiResponse:
+      type: object
+      required:
+      - code
+      - status
+      - remaining_monthly_allowance
+      - extra_allowance
+      properties:
+        code:
+          type: integer
+          minimum: 0
+        status:
+          type: string
+        remaining_monthly_allowance:
+          type: integer
+          minimum: 0
+        extra_allowance:
+          type: integer
+          minimum: 0
+      example:
+        code: 200
+        status: Success
+        remaining_monthly_allowance: 257
+        extra_allowance: 0
     Genres:
       allOf:
       - $ref: '#/components/schemas/BaseApiResponse'
@@ -71,27 +95,3 @@ components:
       example:
         id: 1
         name: Action
-    BaseApiResponse:
-      type: object
-      required:
-      - code
-      - status
-      - remaining_monthly_allowance
-      - extra_allowance
-      properties:
-        code:
-          type: integer
-          minimum: 0
-        status:
-          type: string
-        remaining_monthly_allowance:
-          type: integer
-          minimum: 0
-        extra_allowance:
-          type: integer
-          minimum: 0
-      example:
-        code: 200
-        status: Success
-        remaining_monthly_allowance: 257
-        extra_allowance: 0

@@ -158,6 +158,104 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
+    PlatformImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 0
+        type:
+          type: string
+        filename:
+          type: string
+      example:
+        id: 72
+        type: fanart
+        filename: platform/fanart/12-1.jpg
+    PlatformsByPlatformID:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - platforms
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              platforms:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Platform'
+    Platforms:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - platforms
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              platforms:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Platform'
+    BaseApiResponse:
+      type: object
+      required:
+      - code
+      - status
+      - remaining_monthly_allowance
+      - extra_allowance
+      properties:
+        code:
+          type: integer
+          minimum: 0
+        status:
+          type: string
+        remaining_monthly_allowance:
+          type: integer
+          minimum: 0
+        extra_allowance:
+          type: integer
+          minimum: 0
+      example:
+        code: 200
+        status: Success
+        remaining_monthly_allowance: 257
+        extra_allowance: 0
+    PlatformsByPlatformName:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - platforms
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              platforms:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Platform'
     Platform:
       type: object
       required:
@@ -194,50 +292,6 @@ components:
         console: 25.png
         controller: ''
         developer: The 3DO Company
-    BaseApiResponse:
-      type: object
-      required:
-      - code
-      - status
-      - remaining_monthly_allowance
-      - extra_allowance
-      properties:
-        code:
-          type: integer
-          minimum: 0
-        status:
-          type: string
-        remaining_monthly_allowance:
-          type: integer
-          minimum: 0
-        extra_allowance:
-          type: integer
-          minimum: 0
-      example:
-        code: 200
-        status: Success
-        remaining_monthly_allowance: 257
-        extra_allowance: 0
-    Platforms:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - platforms
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              platforms:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/Platform'
     PaginatedApiResponse:
       allOf:
       - $ref: '#/components/schemas/BaseApiResponse'
@@ -262,20 +316,31 @@ components:
               previous: ''
               current: https://api.thegamesdb.net/Games/ByGameID?apikey=APIKEY&id=1%2C2%2C3%2C4&fields=players%2Cpublishers%2Cgenres%2Coverview%2Clast_updated%2Crating%2Cplatform%2Ccoop%2Cyoutube%2Cos%2Cprocessor%2Cram%2Chdd%2Cvideo%2Csound%2Calternates&include=boxart%2Cplatform&page=1
               next: ''
-    PlatformImage:
-      type: object
-      properties:
-        id:
-          type: integer
-          minimum: 0
-        type:
-          type: string
-        filename:
-          type: string
-      example:
-        id: 72
-        type: fanart
-        filename: platform/fanart/12-1.jpg
+    PlatformsImages:
+      allOf:
+      - $ref: '#/components/schemas/PaginatedApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - base_url
+            - images
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              base_url:
+                $ref: '#/components/schemas/ImageBaseUrlMeta'
+              images:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/PlatformImage'
     ImageBaseUrlMeta:
       type: object
       required:
@@ -305,68 +370,3 @@ components:
         cropped_center_thumb: https://cdn.thegamsdb.net/images/cropped_center_thumb/
         medium: https://cdn.thegamsdb.net/images/medium/
         large: https://cdn.thegamsdb.net/images/large/
-    PlatformsByPlatformName:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - platforms
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              platforms:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Platform'
-    PlatformsImages:
-      allOf:
-      - $ref: '#/components/schemas/PaginatedApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - base_url
-            - images
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              base_url:
-                $ref: '#/components/schemas/ImageBaseUrlMeta'
-              images:
-                type: object
-                additionalProperties:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/PlatformImage'
-    PlatformsByPlatformID:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - platforms
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              platforms:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/Platform'
