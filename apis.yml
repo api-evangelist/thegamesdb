@@ -143,6 +143,10 @@ apis:
   - type: JSONLD
     url: json-ld/thegamesdb-context.jsonld
 common:
+  - type: Plans
+    url: plans/thegamesdb-plans-pricing.yml
+  - type: FinOps
+    url: finops/thegamesdb-finops.yml
   - type: AgenticAccess
     url: agentic-access/thegamesdb-agentic-access.yml
   - type: DomainSecurity
