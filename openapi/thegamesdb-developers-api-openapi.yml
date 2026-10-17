@@ -37,6 +37,26 @@ paths:
           description: bad API key or hit rate-limit cap
 components:
   schemas:
+    Developers:
+      allOf:
+      - $ref: '#/components/schemas/BaseApiResponse'
+      - type: object
+        required:
+        - data
+        properties:
+          data:
+            type: object
+            required:
+            - count
+            - developers
+            properties:
+              count:
+                type: integer
+                minimum: 0
+              developers:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Developer'
     BaseApiResponse:
       type: object
       required:
@@ -75,23 +95,3 @@ components:
       example:
         id: 202
         name: Acclaim Studios Manchester
-    Developers:
-      allOf:
-      - $ref: '#/components/schemas/BaseApiResponse'
-      - type: object
-        required:
-        - data
-        properties:
-          data:
-            type: object
-            required:
-            - count
-            - developers
-            properties:
-              count:
-                type: integer
-                minimum: 0
-              developers:
-                type: object
-                additionalProperties:
-                  $ref: '#/components/schemas/Developer'
