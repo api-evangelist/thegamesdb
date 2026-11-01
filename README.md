@@ -1,4 +1,4 @@
-# TheGamesDB (thegamesdb)
+# TheGamesDB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,70 +66,180 @@
 
 An open, online database for video game fans providing game information, artwork, and metadata via API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/thegamesdb/refs/heads/main/apis.yml)
+**Areas:** Database · Gaming · Video Games · Metadata · Artwork
 
-## Scope
+## TheGamesDB on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for TheGamesDB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/thegamesdb/](https://apis.io/providers/thegamesdb/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Database
-- Gaming
-- Video Games
-- Metadata
-- Artwork
+- [TheGamesDB Developers API](https://apis.io/apis/thegamesdb/thegamesdb-developers-api/) — The Developers API from TheGamesDB — 1 operation(s) for developers.
+- [TheGamesDB Games API](https://apis.io/apis/thegamesdb/thegamesdb-games-api/) — The Games API from TheGamesDB — 6 operation(s) for games.
+- [TheGamesDB Genres API](https://apis.io/apis/thegamesdb/thegamesdb-genres-api/) — The Genres API from TheGamesDB — 1 operation(s) for genres.
+- [TheGamesDB Platforms API](https://apis.io/apis/thegamesdb/thegamesdb-platforms-api/) — The Platforms API from TheGamesDB — 4 operation(s) for platforms.
+- [TheGamesDB Publishers API](https://apis.io/apis/thegamesdb/thegamesdb-publishers-api/) — The Publishers API from TheGamesDB — 1 operation(s) for publishers.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-08
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### TheGamesDB API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-An open, online database for video game fans providing game information, artwork, and metadata via API. Search and retrieve game details, platform information, game artwork (boxart, screenshots, fanart), genres, developers, and publishers. Requires an API key.
+- [Thegamesdb Agentic Access](https://apis.io/agentic-access/thegamesdb/thegamesdb-agentic-access/)
 
-- **Human URL:** [https://api.thegamesdb.net/](https://api.thegamesdb.net/)
-- **Base URL:** `https://api.thegamesdb.net`
+#### JSON Schema (8)
 
-#### Tags
+The data models the API reads and writes.
 
-- Database
-- Gaming
-- Video Games
-- Metadata
-- Artwork
+- [Game](https://apis.io/schemas/thegamesdb/thegamesdb-game/)
+- [GameImage](https://apis.io/schemas/thegamesdb/thegamesdb-game-image/)
+- [GamesByGameIDResponse](https://apis.io/schemas/thegamesdb/thegamesdb-games-by-game-id-response/)
+- [GamesImagesResponse](https://apis.io/schemas/thegamesdb/thegamesdb-games-images-response/)
+- [GamesUpdatesResponse](https://apis.io/schemas/thegamesdb/thegamesdb-games-updates-response/)
+- [GenresDevelopersPublishersResponse](https://apis.io/schemas/thegamesdb/thegamesdb-genres-developers-publishers-response/)
+- [Platform](https://apis.io/schemas/thegamesdb/thegamesdb-platform/)
+- [PlatformsResponse](https://apis.io/schemas/thegamesdb/thegamesdb-platforms-response/)
 
-#### Properties
+#### JSON Structure (8)
 
-- [Documentation](https://api.thegamesdb.net/)
-- [OpenAPI](openapi/thegamesdb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/thegamesdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/thegamesdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Sign Up](https://api.thegamesdb.net/key.php)
-- [JSON Schema](json-schema/thegamesdb-game-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/thegamesdb-game-structure.json)
-- [JSON-LD](json-ld/thegamesdb-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Thegamesdb Game Image Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-game-image-structure/)
+- [Thegamesdb Game Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-game-structure/)
+- [Thegamesdb Games By Game Id Response Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-games-by-game-id-response-structure/)
+- [Thegamesdb Games Images Response Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-games-images-response-structure/)
+- [Thegamesdb Games Updates Response Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-games-updates-response-structure/)
+- [Thegamesdb Genres Developers Publishers Response Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-genres-developers-publishers-response-structure/)
+- [Thegamesdb Platform Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-platform-structure/)
+- [Thegamesdb Platforms Response Structure](https://apis.io/json-structure/thegamesdb/thegamesdb-platforms-response-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Thegamesdb Context](https://apis.io/jsonld/thegamesdb/thegamesdb-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Thegamesdb Vocabulary](https://apis.io/vocabularies/thegamesdb/thegamesdb-vocabulary/)
+
+#### Examples (8)
+
+Example requests and responses.
+
+- [Thegamesdb Game Example](https://apis.io/examples/thegamesdb/thegamesdb-game-example/)
+- [Thegamesdb Game Image Example](https://apis.io/examples/thegamesdb/thegamesdb-game-image-example/)
+- [Thegamesdb Games By Game Id Response Example](https://apis.io/examples/thegamesdb/thegamesdb-games-by-game-id-response-example/)
+- [Thegamesdb Games Images Response Example](https://apis.io/examples/thegamesdb/thegamesdb-games-images-response-example/)
+- [Thegamesdb Games Updates Response Example](https://apis.io/examples/thegamesdb/thegamesdb-games-updates-response-example/)
+- [Thegamesdb Genres Developers Publishers Response Example](https://apis.io/examples/thegamesdb/thegamesdb-genres-developers-publishers-response-example/)
+- [Thegamesdb Platform Example](https://apis.io/examples/thegamesdb/thegamesdb-platform-example/)
+- [Thegamesdb Platforms Response Example](https://apis.io/examples/thegamesdb/thegamesdb-platforms-response-example/)
+
+#### Collections (6)
+
+Postman and Open Collection request collections.
+
+- [TheGamesDB API](https://apis.io/collections/thegamesdb/open-thegamesdb/)
+- [TheGamesDB Developers API](https://apis.io/collections/thegamesdb/open-thegamesdb-developers-api/)
+- [TheGamesDB Developers Games API](https://apis.io/collections/thegamesdb/open-thegamesdb-games-api/)
+- [TheGamesDB Developers Genres API](https://apis.io/collections/thegamesdb/open-thegamesdb-genres-api/)
+- [TheGamesDB Developers Platforms API](https://apis.io/collections/thegamesdb/open-thegamesdb-platforms-api/)
+- [TheGamesDB Developers Publishers API](https://apis.io/collections/thegamesdb/open-thegamesdb-publishers-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [TheGamesDB — jsonschema rules](https://apis.io/rules/thegamesdb/thegamesdb-jsonschema-spectral-rules/)
+- [TheGamesDB API Rules](https://apis.io/rules/thegamesdb/thegamesdb-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Thegamesdb Domain Security](https://apis.io/security/thegamesdb/thegamesdb-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Thegamesdb Plans Pricing](https://apis.io/plans/thegamesdb/thegamesdb-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Thegamesdb Rate Limits](https://apis.io/rate-limits/thegamesdb/thegamesdb-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Thegamesdb Finops](https://apis.io/finops/thegamesdb/thegamesdb-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://thegamesdb.net/)
 - [Documentation](https://api.thegamesdb.net/)
-- [Sign Up](https://api.thegamesdb.net/key.php)
-- [GitHub Organization](https://github.com/TheGamesDB)
-- [Spectral Rules](rules/thegamesdb-spectral-rules.yml)
-- [Vocabulary](vocabulary/thegamesdb-vocabulary.yml)
-- [Rate Limits](https://api.thegamesdb.net/key.php)
-- [Authentication](https://api.thegamesdb.net/key.php)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [GitHub](https://github.com/TheGamesDB)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 52.4 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 21.1 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/thegamesdb/](https://apis.io/providers/thegamesdb/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TheGamesDB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/thegamesdb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
